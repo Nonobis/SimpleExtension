@@ -47,7 +47,7 @@
     <Compile Include="ControlExtension.cs" />
     <Compile Include="DateTimeExtension.cs" />
     <Compile Include="EnumExtension.cs" />
-    <Compile Include="Enum\ObjectToStringTypes.cs" />
+    <Compile Include="Enums\ObjectToStringTypes.cs" />
     <Compile Include="ExceptionExtension.cs" />
     <Compile Include="FileExtension.cs" />
     <Compile Include="ImageExtension.cs" />

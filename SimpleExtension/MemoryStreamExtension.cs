@@ -6,7 +6,7 @@ namespace SimpleExtension
     public static class MemoryStreamExtension
     {
         /// <summary>
-        /// Returns the content of the stream as a string
+        ///     Returns the content of the stream as a string
         /// </summary>
         public static string GetAsString(this MemoryStream ms, Encoding encoding)
         {
@@ -14,7 +14,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Returns the content of the stream as a string
+        ///     Returns the content of the stream as a string
         /// </summary>
         public static string GetAsString(this MemoryStream ms)
         {
@@ -22,7 +22,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Writes the specified string into the memory stream
+        ///     Writes the specified string into the memory stream
         /// </summary>
         public static void WriteString(this MemoryStream ms, string inputString, Encoding encoding)
         {
@@ -31,7 +31,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Writes the specified string into the memory stream
+        ///     Writes the specified string into the memory stream
         /// </summary>
         public static void WriteString(this MemoryStream ms, string inputString)
         {

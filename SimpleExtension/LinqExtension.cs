@@ -8,7 +8,7 @@ namespace SimpleExtension
     public static class LinqExtension
     {
         /// <summary>
-        /// Randoms the element.
+        ///     Randoms the element.
         /// </summary>
         public static T RandomElement<T>(this IQueryable<T> q, Expression<Func<T, bool>> e)
         {
@@ -18,17 +18,17 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Returns a random element from a pList, or null if the pList is empty.
+        ///     Returns a random element from a pList, or null if the pList is empty.
         /// </summary>
         public static T Random<T>(this IEnumerable<T> pList, Random rand)
         {
-            if (pList != null && pList.Any())
+            if ((pList != null) && pList.Any())
                 return pList.ElementAt(rand.Next(pList.Count()));
             return default(T);
         }
 
         /// <summary>
-        /// Returns a shuffled IEnumerable.
+        ///     Returns a shuffled IEnumerable.
         /// </summary>
         /// <typeparam name="T">The type of object being enumerated</typeparam>
         /// <returns>A shuffled shallow copy of the source items</returns>
@@ -38,7 +38,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Returns a shuffled IEnumerable.
+        ///     Returns a shuffled IEnumerable.
         /// </summary>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rand)
         {
@@ -48,7 +48,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Shuffles an IList in place.
+        ///     Shuffles an IList in place.
         /// </summary>
         public static void Shuffle<T>(this IList<T> pList)
         {
@@ -56,46 +56,54 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Shuffles an IList in place.
+        ///     Shuffles an IList in place.
         /// </summary>
         public static void Shuffle<T>(this IList<T> pList, Random rand)
         {
-            int count = pList.Count;
+            var count = pList.Count;
             while (count > 1)
             {
-                int i = rand.Next(count--);
-                T temp = pList[count];
+                var i = rand.Next(count--);
+                var temp = pList[count];
                 pList[count] = pList[i];
                 pList[i] = temp;
             }
         }
+
         /// <summary>
-        /// Chunkses the specified chunk size.
+        ///     Chunkses the specified chunk size.
         /// </summary>
         public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> enumerable,
-                                                     int chunkSize)
+            int chunkSize)
         {
             if (chunkSize < 1) throw new ArgumentException("chunkSize must be positive");
 
             using (var e = enumerable.GetEnumerator())
+            {
                 while (e.MoveNext())
                 {
-                    var remaining = chunkSize;    // elements remaining in the current chunk
-                    var innerMoveNext = new Func<bool>(() => --remaining > 0 && e.MoveNext());
+                    var remaining = chunkSize; // elements remaining in the current chunk
+                    var innerMoveNext = new Func<bool>(() => (--remaining > 0) && e.MoveNext());
 
                     yield return e.GetChunk(innerMoveNext);
-                    while (innerMoveNext()) {/* discard elements skipped by inner iterator */}
+                    while (innerMoveNext())
+                    {
+/* discard elements skipped by inner iterator */
+                    }
                 }
+            }
         }
 
         /// <summary>
-        /// Gets the chunk.
+        ///     Gets the chunk.
         /// </summary>
         private static IEnumerable<T> GetChunk<T>(this IEnumerator<T> e,
-                                                  Func<bool> innerMoveNext)
+            Func<bool> innerMoveNext)
         {
-            do yield return e.Current;
-            while (innerMoveNext());
+            do
+            {
+                yield return e.Current;
+            } while (innerMoveNext());
         }
     }
 }

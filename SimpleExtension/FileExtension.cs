@@ -5,7 +5,7 @@ namespace SimpleExtension
     public static class FileExtension
     {
         /// <summary>
-        /// Files to byte array.
+        ///     Files to byte array.
         /// </summary>
         /// <param name="pFilepath">The p filepath.</param>
         /// <returns></returns>

@@ -1,5 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<package >
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<package>
   <!--
 	Any nuget reference you add will be included in the nuget package as a dependency without you
 	having to add it in here.

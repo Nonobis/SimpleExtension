@@ -8,12 +8,12 @@ using System.Text;
 namespace SimpleExtension
 {
     /// <summary>
-    /// Class ImageExtension.
+    ///     Class ImageExtension.
     /// </summary>
     public static class ImageExtension
     {
         /// <summary>
-        /// Bytes the array to image.
+        ///     Bytes the array to image.
         /// </summary>
         /// <param name="byteArrayIn">The byte array in.</param>
         /// <returns>Image.</returns>
@@ -25,19 +25,19 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Byteses to string.
+        ///     Byteses to string.
         /// </summary>
         /// <param name="bytes">The bytes.</param>
         /// <returns>System.String.</returns>
         public static string BytesToString(this byte[] bytes)
         {
-            char[] chars = new char[bytes.Length / sizeof(char)];
+            var chars = new char[bytes.Length/sizeof(char)];
             Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
             return new string(chars);
         }
 
         /// <summary>
-        /// Gets the image format.
+        ///     Gets the image format.
         /// </summary>
         /// <param name="pImage">The p image.</param>
         /// <returns>ImageFormat.</returns>
@@ -65,7 +65,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Gets the MD5 hash.
+        ///     Gets the MD5 hash.
         /// </summary>
         /// <param name="pBytes">The p bytes.</param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Gets the sha256 hash.
+        ///     Gets the sha256 hash.
         /// </summary>
         /// <param name="pBytes">The p bytes.</param>
         /// <returns></returns>
@@ -90,13 +90,13 @@ namespace SimpleExtension
         {
             using (var sha = new SHA256Managed())
             {
-                byte[] checksum = sha.ComputeHash(pBytes);
+                var checksum = sha.ComputeHash(pBytes);
                 return BitConverter.ToString(checksum).Replace("-", string.Empty);
             }
         }
 
         /// <summary>
-        /// Images to byte array.
+        ///     Images to byte array.
         /// </summary>
         /// <param name="imageIn">The image in.</param>
         /// <returns>System.Byte[].</returns>
@@ -106,19 +106,19 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Strings to bytes.
+        ///     Strings to bytes.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns>System.Byte[].</returns>
         public static byte[] StringToBytes(this string str)
         {
-            byte[] bytes = new byte[str.Length * sizeof(char)];
+            var bytes = new byte[str.Length*sizeof(char)];
             Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
             return bytes;
         }
 
         /// <summary>
-        /// To the array.
+        ///     To the array.
         /// </summary>
         /// <param name="image">The image.</param>
         /// <param name="format">The format.</param>

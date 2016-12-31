@@ -4,12 +4,12 @@ using System.Windows.Forms;
 namespace SimpleExtension
 {
     /// <summary>
-    /// Class ControlExtensions.
+    ///     Class ControlExtensions.
     /// </summary>
     public static class ControlExtension
     {
         /// <summary>
-        /// Thread invoke for Control
+        ///     Thread invoke for Control
         /// </summary>
         /// <param name="control">The control.</param>
         /// <param name="code">The code.</param>
@@ -22,7 +22,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Thread invoke for UserControl
+        ///     Thread invoke for UserControl
         /// </summary>
         /// <param name="control">The control.</param>
         /// <param name="code">The code.</param>
