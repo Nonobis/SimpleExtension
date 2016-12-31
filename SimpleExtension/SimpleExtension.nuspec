@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package >
+	<!--
+	Any nuget reference you add will be included in the nuget package as a dependency without you
+	having to add it in here.
+	
+	For more info on how to compose a nuspec file see http://docs.nuget.org/create/nuspec-reference 
+	-->
+
+	<metadata>
+		<id>SimpleExtension</id>
+		<version>0.0.0.18</version>
+		<title>SimpleExtension</title>
+		<description>Simple collection of extensions for your project.</description>
+		<authors>Arnaud Dartois</authors>
+		<owners>Arnaud Dartois</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<releaseNotes>Initial release.</releaseNotes>
+		<copyright>Copyright Arnaud Dartois 2016</copyright>
+		<tags>Extension Collection</tags>
+	</metadata>
+</package>
