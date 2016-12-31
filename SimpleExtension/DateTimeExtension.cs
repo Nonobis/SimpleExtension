@@ -14,10 +14,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns 12:00am time for the date passed. Useful for date only search ranges start value
         /// </summary>
-        /// <param name="date">Date to convert</param>
-        /// <returns>
-        ///     DateTime.
-        /// </returns>
         public static DateTime BeginningOfDay(this DateTime date)
         {
             return date.Date;
@@ -26,8 +22,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Lengthes the of time.
         /// </summary>
-        /// <param name="date">The date.</param>
-        /// <returns></returns>
         public static string LengthOfTime(this DateTime date)
         {
             var lengthOfTime = DateTime.Now.Subtract(date);
@@ -43,12 +37,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns the Start of the given month (the fist millisecond of the given date)
         /// </summary>
-        /// <param name="obj">
-        ///     DateTime Base, from where the calculation will be preformed.
-        /// </param>
-        /// <returns>
-        ///     Returns the Start of the given month (the fist millisecond of the given date)
-        /// </returns>
         public static DateTime BeginningOfMonth(this DateTime obj)
         {
             return new DateTime(obj.Year, obj.Month, 1, 0, 0, 0, 0);
@@ -57,12 +45,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns true if the date is between or equal to one of the two values.
         /// </summary>
-        /// <param name="date">DateTime Base, from where the calculation will be preformed.</param>
-        /// <param name="startDate">The start date.</param>
-        /// <param name="endDate">The end date.</param>
-        /// <returns>
-        ///     boolean value indicating if the date is between or equal to one of the two values
-        /// </returns>
         public static bool Between(this DateTime date, DateTime startDate, DateTime endDate)
         {
             var ticks = date.Ticks;
@@ -72,11 +54,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Creates a DateTime value from date and time input values
         /// </summary>
-        /// <param name="date">The date.</param>
-        /// <param name="time">The time.</param>
-        /// <returns>
-        ///     DateTime.
-        /// </returns>
         public static DateTime DateTimeFromDateAndTime(this string date, string time)
         {
             return DateTime.Parse($"{date} {time}");
@@ -85,11 +62,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Creates a DateTime Value from a DateTime date and a string time value.
         /// </summary>
-        /// <param name="date">The date.</param>
-        /// <param name="time">The time.</param>
-        /// <returns>
-        ///     DateTime.
-        /// </returns>
         public static DateTime DateTimeFromDateAndTime(this DateTime date, string time)
         {
             return DateTime.Parse($"{date.ToShortDateString()} {time}");
@@ -98,12 +70,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns 12:59:59pm time for the date passed. Useful for date only search ranges end value
         /// </summary>
-        /// <param name="date">
-        ///     Date to convert
-        /// </param>
-        /// <returns>
-        ///     DateTime.
-        /// </returns>
         public static DateTime EndOfDay(this DateTime date)
         {
             return date.Date.AddDays(1).AddMilliseconds(-1);
@@ -113,13 +79,6 @@ namespace SimpleExtension
         ///     Returns the very end of the given month (the last millisecond of the last hour for the
         ///     given date)
         /// </summary>
-        /// <param name="obj">
-        ///     DateTime Base, from where the calculation will be preformed.
-        /// </param>
-        /// <returns>
-        ///     Returns the very end of the given month (the last millisecond of the last hour for the
-        ///     given date)
-        /// </returns>
         public static DateTime EndOfMonth(this DateTime obj)
         {
             return new DateTime(obj.Year, obj.Month, DateTime.DaysInMonth(obj.Year, obj.Month), 23, 59, 59, 999);
@@ -128,15 +87,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Converts a fractional hour value like 1.25 to 1:15 hours:minutes format
         /// </summary>
-        /// <param name="hours">
-        ///     Decimal hour value
-        /// </param>
-        /// <param name="format">
-        ///     An optional format string where {0} is hours and {1} is minutes (ie: "{0}h:{1}m").
-        /// </param>
-        /// <returns>
-        ///     System.String.
-        /// </returns>
         public static string FractionalHoursToString(this decimal hours, string format)
         {
             if (string.IsNullOrEmpty(format))
@@ -155,12 +105,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Converts a fractional hour value like 1.25 to 1:15 hours:minutes format
         /// </summary>
-        /// <param name="hours">
-        ///     Decimal hour value
-        /// </param>
-        /// <returns>
-        ///     System.String.
-        /// </returns>
         public static string FractionalHoursToString(this decimal hours)
         {
             return FractionalHoursToString(hours, null);
@@ -169,15 +113,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Displays a date in friendly format.
         /// </summary>
-        /// <param name="date">
-        ///     The date.
-        /// </param>
-        /// <param name="showTime">
-        ///     if set to <c>true</c> [show time].
-        /// </param>
-        /// <returns>
-        ///     Today,Yesterday,Day of week or a string day (Jul 15, 2008)
-        /// </returns>
         public static string FriendlyDateString(this DateTime date, bool showTime)
         {
             if (date < MinDateValue)
@@ -203,12 +138,6 @@ namespace SimpleExtension
         ///     Displays a number of milliseconds as friendly seconds, hours, minutes Pass -1 to get a
         ///     blank date.
         /// </summary>
-        /// <param name="milliSeconds">
-        ///     the elapsed milliseconds to display time for
-        /// </param>
-        /// <returns>
-        ///     string in format of just now or 1m ago, 2h ago
-        /// </returns>
         public static string FriendlyElapsedTimeString(this int milliSeconds)
         {
             if (milliSeconds < 0)
@@ -223,10 +152,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Displays the elapsed time friendly seconds, hours, minutes
         /// </summary>
-        /// <param name="elapsed">Timespan of elapsed time</param>
-        /// <returns>
-        ///     string in format of just now or 1m ago, 2h ago
-        /// </returns>
         public static string FriendlyElapsedTimeString(this TimeSpan elapsed)
         {
             return FriendlyElapsedTimeString((int) elapsed.TotalMilliseconds);
@@ -235,10 +160,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Converts the passed date time value to Mime formatted time string
         /// </summary>
-        /// <param name="time">The time.</param>
-        /// <returns>
-        ///     System.String.
-        /// </returns>
         public static string MimeDateTime(this DateTime time)
         {
             var offset = TimeZone.CurrentTimeZone.GetUtcOffset(time);
@@ -250,11 +171,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns a short date time string
         /// </summary>
-        /// <param name="date">The date.</param>
-        /// <param name="showTime">if set to <c>true</c> [show time].</param>
-        /// <returns>
-        ///     System.String.
-        /// </returns>
         public static string ShortDateString(this DateTime date, bool showTime = false)
         {
             if (date < MinDateValue)
@@ -270,11 +186,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns a short date time string
         /// </summary>
-        /// <param name="date">The date.</param>
-        /// <param name="showTime">if set to <c>true</c> [show time].</param>
-        /// <returns>
-        ///     System.String.
-        /// </returns>
         public static string ShortDateString(this DateTime? date, bool showTime)
         {
             if (date == null)

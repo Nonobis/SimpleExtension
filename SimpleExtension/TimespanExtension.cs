@@ -7,9 +7,6 @@ namespace SimpleExtension
         /// <summary>
         ///     To the human time string.
         /// </summary>
-        /// <param name="span">The span.</param>
-        /// <param name="significantDigits">The significant digits.</param>
-        /// <returns></returns>
         public static string ToHumanTimeString(this TimeSpan span, int significantDigits = 3)
         {
             var format = "G" + significantDigits;
@@ -27,9 +24,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Rounds to nearest.
         /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="roundTo">The round to.</param>
-        /// <returns></returns>
         public static TimeSpan RoundToNearest(this TimeSpan a, TimeSpan roundTo)
         {
             var ticks = (long) (Math.Round(a.Ticks/(double) roundTo.Ticks)*roundTo.Ticks);
@@ -39,8 +33,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Strings to time span.
         /// </summary>
-        /// <param name="time">The time.</param>
-        /// <returns></returns>
         public static TimeSpan StringToTimeSpan(this string time)
         {
             TimeSpan timespan;
@@ -51,10 +43,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Converts the seconds to a timespan object.
         /// </summary>
-        /// <param name="totalSeconds">The total seconds.</param>
-        /// <returns>
-        ///     A timespan object.
-        /// </returns>
         public static TimeSpan IntegerToTimeSpan(this int totalSeconds)
         {
             return new TimeSpan(0, 0, totalSeconds);

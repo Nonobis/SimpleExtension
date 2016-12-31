@@ -11,8 +11,6 @@ namespace SimpleExtension
         /// <summary>
         ///     To the description.
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
         public static string ToDescription(this Enum value)
         {
             var da =
@@ -24,8 +22,6 @@ namespace SimpleExtension
         /// <summary>
         ///     To the list.
         /// </summary>
-        /// <param name="pEnumeration"></param>
-        /// <returns></returns>
         public static List<Enum> ToList(this Enum pEnumeration)
         {
             return
