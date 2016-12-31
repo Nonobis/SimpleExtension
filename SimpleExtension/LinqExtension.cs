@@ -10,10 +10,6 @@ namespace SimpleExtension
         /// <summary>
         /// Randoms the element.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="q">The q.</param>
-        /// <param name="e">The e.</param>
-        /// <returns></returns>
         public static T RandomElement<T>(this IQueryable<T> q, Expression<Func<T, bool>> e)
         {
             var r = new Random();
@@ -22,15 +18,12 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Returns a random element from a list, or null if the list is empty.
+        /// Returns a random element from a pList, or null if the pList is empty.
         /// </summary>
-        /// <typeparam name="T">The type of object being enumerated</typeparam>
-        /// <param name="rand">An instance of a random number generator</param>
-        /// <returns>A random element from a list, or null if the list is empty</returns>
-        public static T Random<T>(this IEnumerable<T> list, Random rand)
+        public static T Random<T>(this IEnumerable<T> pList, Random rand)
         {
-            if (list != null && list.Count() > 0)
-                return list.ElementAt(rand.Next(list.Count()));
+            if (pList != null && pList.Any())
+                return pList.ElementAt(rand.Next(pList.Count()));
             return default(T);
         }
 
@@ -47,40 +40,62 @@ namespace SimpleExtension
         /// <summary>
         /// Returns a shuffled IEnumerable.
         /// </summary>
-        /// <typeparam name="T">The type of object being enumerated</typeparam>
-        /// <param name="rand">An instance of a random number generator</param>
-        /// <returns>A shuffled shallow copy of the source items</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rand)
         {
-            var list = source.ToList();
-            list.Shuffle(rand);
-            return list;
+            var pList = source.ToList();
+            pList.Shuffle(rand);
+            return pList;
         }
 
         /// <summary>
         /// Shuffles an IList in place.
         /// </summary>
-        /// <typeparam name="T">The type of elements in the list</typeparam>
-        public static void Shuffle<T>(this IList<T> list)
+        public static void Shuffle<T>(this IList<T> pList)
         {
-            list.Shuffle(new Random());
+            pList.Shuffle(new Random());
         }
 
         /// <summary>
         /// Shuffles an IList in place.
         /// </summary>
-        /// <typeparam name="T">The type of elements in the list</typeparam>
-        /// <param name="rand">An instance of a random number generator</param>
-        public static void Shuffle<T>(this IList<T> list, Random rand)
+        public static void Shuffle<T>(this IList<T> pList, Random rand)
         {
-            int count = list.Count;
+            int count = pList.Count;
             while (count > 1)
             {
                 int i = rand.Next(count--);
-                T temp = list[count];
-                list[count] = list[i];
-                list[i] = temp;
+                T temp = pList[count];
+                pList[count] = pList[i];
+                pList[i] = temp;
             }
+        }
+        /// <summary>
+        /// Chunkses the specified chunk size.
+        /// </summary>
+        public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> enumerable,
+                                                     int chunkSize)
+        {
+            if (chunkSize < 1) throw new ArgumentException("chunkSize must be positive");
+
+            using (var e = enumerable.GetEnumerator())
+                while (e.MoveNext())
+                {
+                    var remaining = chunkSize;    // elements remaining in the current chunk
+                    var innerMoveNext = new Func<bool>(() => --remaining > 0 && e.MoveNext());
+
+                    yield return e.GetChunk(innerMoveNext);
+                    while (innerMoveNext()) {/* discard elements skipped by inner iterator */}
+                }
+        }
+
+        /// <summary>
+        /// Gets the chunk.
+        /// </summary>
+        private static IEnumerable<T> GetChunk<T>(this IEnumerator<T> e,
+                                                  Func<bool> innerMoveNext)
+        {
+            do yield return e.Current;
+            while (innerMoveNext());
         }
     }
 }

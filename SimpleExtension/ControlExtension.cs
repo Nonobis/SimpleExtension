@@ -13,7 +13,7 @@ namespace SimpleExtension
         /// </summary>
         /// <param name="control">The control.</param>
         /// <param name="code">The code.</param>
-        public static void UIThreadInvoke(this Control control, Action code)
+        public static void UiThreadInvoke(this Control control, Action code)
         {
             if (control.InvokeRequired)
                 control.Invoke(code);
@@ -26,7 +26,7 @@ namespace SimpleExtension
         /// </summary>
         /// <param name="control">The control.</param>
         /// <param name="code">The code.</param>
-        public static void UIThreadInvoke(this UserControl control, Action code)
+        public static void UiThreadInvoke(this UserControl control, Action code)
         {
             if (control.InvokeRequired)
                 control.Invoke(code);

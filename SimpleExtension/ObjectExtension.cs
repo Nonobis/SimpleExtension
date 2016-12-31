@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleExtension
 {
@@ -12,11 +10,6 @@ namespace SimpleExtension
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="instance">The instance.</param>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
         public static string ToString<T>(this T instance) where T : class
         {
 
@@ -35,7 +28,7 @@ namespace SimpleExtension
                                           .Where(prop => prop.GetValue(instance, null) != null)
                                           .ToList();
 
-            var format = string.Format("{{0,-{0}}} : {{1}}", validProperties.Max(prp => prp.Name.Length));
+            var format = $"{{0,-{validProperties.Max(prp => prp.Name.Length)}}} : {{1}}";
 
             return string.Join(
                      Environment.NewLine,

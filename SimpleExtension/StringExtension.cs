@@ -185,7 +185,7 @@ namespace SimpleExtension
         /// </summary>
         /// <param name="html">The HTML.</param>
         /// <returns>System.String.</returns>
-        public static string FixHTMLForDisplay(this string html)
+        public static string FixHtmlForDisplay(this string html)
         {
             html = html.Replace("<", "&lt;");
             html = html.Replace(">", "&gt;");
@@ -287,11 +287,11 @@ namespace SimpleExtension
         /// <summary>
         /// Return a string in proper Case format
         /// </summary>
-        /// <param name="Input">The input.</param>
+        /// <param name="input">The input.</param>
         /// <returns>System.String.</returns>
-        public static string ProperCase(string Input)
+        public static string ProperCase(string input)
         {
-            return Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(Input);
+            return Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(input);
         }
 
         /// <summary>

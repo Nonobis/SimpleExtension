@@ -12,8 +12,6 @@ namespace SimpleExtension
     /// </summary>
     public static class ImageExtension
     {
-        #region Public Methods
-
         /// <summary>
         /// Bytes the array to image.
         /// </summary>
@@ -135,7 +133,5 @@ namespace SimpleExtension
             }
             return array;
         }
-
-        #endregion Public Methods
     }
 }

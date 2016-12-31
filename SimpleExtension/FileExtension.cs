@@ -11,10 +11,9 @@ namespace SimpleExtension
         /// <returns></returns>
         public static byte[] FileToByteArray(this string pFilepath)
         {
-            byte[] imageData = null;
             if (!File.Exists(pFilepath))
-                return imageData;
-            imageData = File.ReadAllBytes(pFilepath);
+                return null;
+            var imageData = File.ReadAllBytes(pFilepath);
             return imageData;
         }
     }
