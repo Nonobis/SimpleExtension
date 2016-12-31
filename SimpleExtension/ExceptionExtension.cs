@@ -24,7 +24,7 @@ namespace SimpleExtension
                     Value = property.GetValue(exception, null)
                 })
                 .Select(x => $"{x.Name} = {x.Value?.ToString() ?? string.Empty}");
-            return string.Join("\n", fields);
+            return string.Join("\n", fields as string[]);
         }
     }
 }

@@ -38,8 +38,8 @@ namespace SimpleExtension
                 validProperties.Select(prop => string.Format(format,
                     prop.Name,
                     arrayTypes.Contains(prop.PropertyType)
-                        ? string.Join(", ", (IEnumerable<string>) prop.GetValue(instance, null))
-                        : prop.GetValue(instance, null))));
+                        ? string.Join(", ", prop.GetValue(instance, null) as string[])
+                        : prop.GetValue(instance, null))) as string[]);
         }
     }
 }
