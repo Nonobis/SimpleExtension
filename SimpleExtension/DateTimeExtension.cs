@@ -242,15 +242,8 @@ namespace SimpleExtension
         public static string MimeDateTime(this DateTime time)
         {
             var offset = TimeZone.CurrentTimeZone.GetUtcOffset(time);
-
-            string sOffset = null;
-            if (offset.Hours < 0)
-                sOffset = $"-{(offset.Hours*-1).ToString().PadLeft(2, '0')}";
-            else
-                sOffset = $"+{offset.Hours.ToString().PadLeft(2, '0')}";
-
+            var sOffset = offset.Hours < 0 ? $"-{(offset.Hours*-1).ToString().PadLeft(2, '0')}" : $"+{offset.Hours.ToString().PadLeft(2, '0')}";
             sOffset += offset.Minutes.ToString().PadLeft(2, '0');
-
             return $"Date: {time.ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture)} {sOffset}";
         }
 

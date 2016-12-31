@@ -45,7 +45,6 @@ namespace SimpleExtension
                     if (throwExceptions)
                         throw;
 
-                    var message = ex.Message;
                     return null;
                 }
                 finally
@@ -301,7 +300,7 @@ namespace SimpleExtension
             {
                 ms?.Close();
             }
-            resultBuffer = ms.ToArray();
+            resultBuffer = ms?.ToArray();
             return retVal;
         }
 

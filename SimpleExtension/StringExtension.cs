@@ -12,13 +12,9 @@ namespace SimpleExtension
         /// <summary>
         ///     Gets the double.
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="defaultValue">The default value.</param>
-        /// <returns></returns>
         public static double GetDouble(this string value, double defaultValue)
         {
             double result;
-
             //Try parsing in the current culture
             if (!double.TryParse(value, NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
                 //Then try in US english
@@ -26,7 +22,6 @@ namespace SimpleExtension
                 //Then in neutral language
                 !double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
                 result = defaultValue;
-
             return result;
         }
 
@@ -34,11 +29,6 @@ namespace SimpleExtension
         /// <summary>
         ///     takes a substring between two anchor strings (or the end of the string if that anchor is null)
         /// </summary>
-        /// <param name="this">a string</param>
-        /// <param name="from">an optional string to search after</param>
-        /// <param name="until">an optional string to search before</param>
-        /// <param name="comparison">an optional comparison for the search</param>
-        /// <returns>a substring based on the search</returns>
         public static string Substring(this string @this, string from = null, string until = null,
             StringComparison comparison = StringComparison.InvariantCulture)
         {
@@ -61,10 +51,8 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     To the stream.
+        /// Convert string to Stram
         /// </summary>
-        /// <param name="pValue">The p value.</param>
-        /// <returns>Stream.</returns>
         public static Stream ToStream(this string pValue)
         {
             // convert string to stream
@@ -79,11 +67,8 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Bins the hexadecimal to string.
+        ///   Convert Hexadecimal to string
         /// </summary>
-        /// <param name="hex">The hexadecimal.</param>
-        /// <returns>System.Byte[].</returns>
-        /// <exception cref="System.ArgumentException"></exception>
         public static byte[] BinHexToString(this string hex)
         {
             var offset = hex.StartsWith("0x") ? 2 : 0;
@@ -104,13 +89,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Extracts the string.
         /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="beginDelim">The begin delimiter.</param>
-        /// <param name="endDelim">The end delimiter.</param>
-        /// <param name="caseSensitive">if set to <c>true</c> [case sensitive].</param>
-        /// <param name="allowMissingEndDelimiter">if set to <c>true</c> [allow missing end delimiter].</param>
-        /// <param name="returnDelimiters">if set to <c>true</c> [return delimiters].</param>
-        /// <returns>System.String.</returns>
         public static string ExtractString(this string source,
             string beginDelim,
             string endDelim,
@@ -125,14 +103,11 @@ namespace SimpleExtension
 
             if (caseSensitive)
             {
-                at1 = source.IndexOf(beginDelim);
+                at1 = source.IndexOf(beginDelim, StringComparison.Ordinal);
                 if (at1 == -1)
                     return string.Empty;
 
-                if (!returnDelimiters)
-                    at2 = source.IndexOf(endDelim, at1 + beginDelim.Length);
-                else
-                    at2 = source.IndexOf(endDelim, at1);
+                at2 = !returnDelimiters ? source.IndexOf(endDelim, at1 + beginDelim.Length, StringComparison.Ordinal) : source.IndexOf(endDelim, at1, StringComparison.Ordinal);
             }
             else
             {
@@ -141,10 +116,7 @@ namespace SimpleExtension
                 if (at1 == -1)
                     return string.Empty;
 
-                if (!returnDelimiters)
-                    at2 = source.IndexOf(endDelim, at1 + beginDelim.Length, StringComparison.OrdinalIgnoreCase);
-                else
-                    at2 = source.IndexOf(endDelim, at1, StringComparison.OrdinalIgnoreCase);
+                at2 = !returnDelimiters ? source.IndexOf(endDelim, at1 + beginDelim.Length, StringComparison.OrdinalIgnoreCase) : source.IndexOf(endDelim, at1, StringComparison.OrdinalIgnoreCase);
             }
 
             if (allowMissingEndDelimiter && (at2 == -1))
@@ -163,8 +135,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Fixes the HTML for display.
         /// </summary>
-        /// <param name="html">The HTML.</param>
-        /// <returns>System.String.</returns>
         public static string FixHtmlForDisplay(this string html)
         {
             html = html.Replace("<", "&lt;");
@@ -176,8 +146,6 @@ namespace SimpleExtension
         /// <summary>
         ///     HTML-encodes a string and returns the encoded string.
         /// </summary>
-        /// <param name="text">The text string to encode.</param>
-        /// <returns>The HTML-encoded text.</returns>
         public static string HtmlEncode(this string text)
         {
             if (text == null)
@@ -222,13 +190,9 @@ namespace SimpleExtension
         ///     Parses an string into an decimal. If the value can't be parsed
         ///     a default value is returned instead
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <param name="defaultValue">The default value.</param>
-        /// <param name="numberFormat">The number format.</param>
-        /// <returns>System.Decimal.</returns>
         public static decimal ParseDecimal(this string input, decimal defaultValue, IFormatProvider numberFormat)
         {
-            var val = defaultValue;
+            decimal val;
             decimal.TryParse(input, NumberStyles.Any, numberFormat, out val);
             return val;
         }
@@ -237,13 +201,9 @@ namespace SimpleExtension
         ///     Parses an string into an integer. If the value can't be parsed
         ///     a default value is returned instead
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <param name="defaultValue">The default value.</param>
-        /// <param name="numberFormat">The number format.</param>
-        /// <returns>System.Int32.</returns>
         public static int ParseInt(this string input, int defaultValue, IFormatProvider numberFormat)
         {
-            var val = defaultValue;
+            int val;
             int.TryParse(input, NumberStyles.Any, numberFormat, out val);
             return val;
         }
@@ -252,9 +212,6 @@ namespace SimpleExtension
         ///     Parses an string into an integer. If the value can't be parsed
         ///     a default value is returned instead
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <param name="defaultValue">The default value.</param>
-        /// <returns>System.Int32.</returns>
         public static int ParseInt(this string input, int defaultValue)
         {
             return ParseInt(input, defaultValue, CultureInfo.CurrentCulture.NumberFormat);
@@ -263,8 +220,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Return a string in proper Case format
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <returns>System.String.</returns>
         public static string ProperCase(string input)
         {
             return Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(input);
@@ -273,11 +228,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Replaces a substring within a string with another substring with optional case sensitivity turned off.
         /// </summary>
-        /// <param name="origString">String to do replacements on</param>
-        /// <param name="findString">The string to find</param>
-        /// <param name="replaceString">The string to replace found string wiht</param>
-        /// <param name="caseInsensitive">If true case insensitive search is performed</param>
-        /// <returns>updated string or original string if no matches</returns>
         public static string ReplaceString(this string origString, string findString,
             string replaceString, bool caseInsensitive)
         {
@@ -288,7 +238,7 @@ namespace SimpleExtension
                     at1 = origString.IndexOf(findString, at1, origString.Length - at1,
                         StringComparison.OrdinalIgnoreCase);
                 else
-                    at1 = origString.IndexOf(findString, at1);
+                    at1 = origString.IndexOf(findString, at1, StringComparison.Ordinal);
 
                 if (at1 == -1)
                     break;
@@ -304,13 +254,7 @@ namespace SimpleExtension
 
         /// <summary>
         ///     String replace function that support
-        /// </summary>
-        /// <param name="origString">Original input string</param>
-        /// <param name="findString">The string that is to be replaced</param>
-        /// <param name="replaceWith">The replacement string</param>
-        /// <param name="instance">Instance of the FindString that is to be found. if Instance = -1 all are replaced</param>
-        /// <param name="caseInsensitive">Case insensitivity flag</param>
-        /// <returns>updated string or original string if no matches</returns>
+        /// </summary>>
         public static string ReplaceStringInstance(this string origString, string findString,
             string replaceWith, int instance,
             bool caseInsensitive)
@@ -325,7 +269,7 @@ namespace SimpleExtension
                     at1 = origString.IndexOf(findString, at1, origString.Length - at1,
                         StringComparison.OrdinalIgnoreCase);
                 else
-                    at1 = origString.IndexOf(findString, at1);
+                    at1 = origString.IndexOf(findString, at1, StringComparison.Ordinal);
 
                 if (at1 == -1)
                     return origString;
@@ -340,9 +284,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Replicates an input string n number of times
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <param name="charCount">The character count.</param>
-        /// <returns>System.String.</returns>
         public static string Replicate(this string input, int charCount)
         {
             return new StringBuilder().Insert(0, input, charCount).ToString();
@@ -351,9 +292,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Replicates a character n number of times and returns a string
         /// </summary>
-        /// <param name="character">The character.</param>
-        /// <param name="charCount">The character count.</param>
-        /// <returns>System.String.</returns>
         public static string Replicate(this char character, int charCount)
         {
             return new string(character, charCount);
@@ -362,10 +300,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Sets the property.
         /// </summary>
-        /// <param name="propertyString">The property string.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
-        /// <returns>System.String.</returns>
         public static string SetProperty(this string propertyString, string key, string value)
         {
             var extract = ExtractString(propertyString, $"<{key}>", $"</{key}>");
@@ -387,9 +321,6 @@ namespace SimpleExtension
         ///     Creates a Stream from a string. Internally creates
         ///     a memory stream and returns that.
         /// </summary>
-        /// <param name="text">The text.</param>
-        /// <param name="encoding">The encoding.</param>
-        /// <returns>Stream.</returns>
         public static Stream StringToStream(this string text, Encoding encoding)
         {
             var ms = new MemoryStream(text.Length*2);
@@ -403,8 +334,6 @@ namespace SimpleExtension
         ///     Creates a Stream from a string. Internally creates
         ///     a memory stream and returns that.
         /// </summary>
-        /// <param name="text">The text.</param>
-        /// <returns>Stream.</returns>
         public static Stream StringToStream(this string text)
         {
             return StringToStream(text, Encoding.Default);
@@ -413,8 +342,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Strips HTML tags out of an HTML string and returns just the text.
         /// </summary>
-        /// <param name="html">Html String</param>
-        /// <returns>System.String.</returns>
         public static string StripHtml(this string html)
         {
             html = Regex.Replace(html, @"<(.|\n)*?>", string.Empty);
@@ -428,8 +355,6 @@ namespace SimpleExtension
         ///     Strips all non digit values from a string and only
         ///     returns the numeric string.
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <returns>System.String.</returns>
         public static string StripNonNumber(this string input)
         {
             var chars = input.ToCharArray();
@@ -445,9 +370,6 @@ namespace SimpleExtension
         ///     Terminates a string with the given end string/character, but only if the
         ///     value specified doesn't already exist and the string is not empty.
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="terminator">The terminator.</param>
-        /// <returns>System.String.</returns>
         public static string TerminateString(this string value, string terminator)
         {
             if (string.IsNullOrEmpty(value) || value.EndsWith(terminator))
@@ -460,9 +382,6 @@ namespace SimpleExtension
         ///     Returns an abstract of the provided text by returning up to Length characters
         ///     of a text string. If the text is truncated a ... is appended.
         /// </summary>
-        /// <param name="text">Text to abstract</param>
-        /// <param name="length">Number of characters to abstract to</param>
-        /// <returns>string</returns>
         public static string TextAbstract(this string text, int length)
         {
             if (text == null)
@@ -472,8 +391,7 @@ namespace SimpleExtension
                 return text;
 
             text = text.Substring(0, length);
-
-            text = text.Substring(0, text.LastIndexOf(" "));
+            text = text.Substring(0, text.LastIndexOf(" ", StringComparison.Ordinal));
             return $"{text}...";
         }
 
@@ -489,10 +407,8 @@ namespace SimpleExtension
                 return string.Empty;
 
             var sb = new StringBuilder(phrase.Length);
-
             // First letter is always upper case
             var nextUpper = true;
-
             foreach (var ch in phrase)
             {
                 if (char.IsWhiteSpace(ch) || char.IsPunctuation(ch) || char.IsSeparator(ch))
@@ -500,37 +416,23 @@ namespace SimpleExtension
                     nextUpper = true;
                     continue;
                 }
-
-                if (nextUpper)
-                    sb.Append(char.ToUpper(ch));
-                else
-                    sb.Append(char.ToLower(ch));
-
+                sb.Append(nextUpper ? char.ToUpper(ch) : char.ToLower(ch));
                 nextUpper = false;
             }
-
             return sb.ToString();
         }
 
         /// <summary>
         ///     Trims a sub string from a string
         /// </summary>
-        /// <param name="text">The text.</param>
-        /// <param name="textToTrim">The text to trim.</param>
-        /// <param name="caseInsensitive">if set to <c>true</c> [case insensitive].</param>
-        /// <returns>System.String.</returns>
         public static string TrimStart(this string text, string textToTrim, bool caseInsensitive)
         {
             while (true)
             {
                 var match = text.Substring(0, textToTrim.Length);
-
                 if ((match == textToTrim) ||
-                    (caseInsensitive && (match.ToLower() == textToTrim.ToLower())))
-                    if (text.Length <= match.Length)
-                        text = "";
-                    else
-                        text = text.Substring(textToTrim.Length);
+                    (caseInsensitive && (string.Equals(match, textToTrim, StringComparison.CurrentCultureIgnoreCase))))
+                    text = text.Length <= match.Length ? "" : text.Substring(textToTrim.Length);
                 else
                     break;
             }
@@ -540,9 +442,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Trims a string to a specific number of max characters
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="charCount">The character count.</param>
-        /// <returns>System.String.</returns>
         public static string TrimTo(this string value, int charCount)
         {
             if (value == null)
@@ -557,9 +456,6 @@ namespace SimpleExtension
         /// <summary>
         ///     Parses the hexadecimal character.
         /// </summary>
-        /// <param name="c">The c.</param>
-        /// <returns>System.Int32.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
         private static int ParseHexChar(this char c)
         {
             if ((c >= '0') && (c <= '9'))

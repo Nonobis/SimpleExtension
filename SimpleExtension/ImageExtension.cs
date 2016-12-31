@@ -128,7 +128,7 @@ namespace SimpleExtension
             byte[] array;
             using (var memoryStream = new MemoryStream())
             {
-                image.Save(memoryStream, format == ImageFormat.MemoryBmp ? ImageFormat.Bmp : format);
+                image.Save(memoryStream, Equals(format, ImageFormat.MemoryBmp) ? ImageFormat.Bmp : format);
                 array = memoryStream.ToArray();
             }
             return array;

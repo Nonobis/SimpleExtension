@@ -83,12 +83,12 @@ namespace SimpleExtension
                 while (e.MoveNext())
                 {
                     var remaining = chunkSize; // elements remaining in the current chunk
-                    var innerMoveNext = new Func<bool>(() => (--remaining > 0) && e.MoveNext());
+                    var innerMoveNext = new Func<bool>(() => e != null && ((--remaining > 0) && e.MoveNext()));
 
                     yield return e.GetChunk(innerMoveNext);
                     while (innerMoveNext())
                     {
-/* discard elements skipped by inner iterator */
+                        /* discard elements skipped by inner iterator */
                     }
                 }
             }
