@@ -24,8 +24,7 @@ namespace SimpleExtension
         public static object DeSerializeObject(this string fileName, Type objectType, bool binarySerialization,
             bool throwExceptions)
         {
-            object instance = null;
-
+            object instance;
             if (!binarySerialization)
             {
                 XmlReader reader = null;
