@@ -40,7 +40,7 @@ namespace SimpleExtension
 
                     instance = serializer.Deserialize(reader);
                 }
-                catch (Exception ex)
+                catch
                 {
                     if (throwExceptions)
                         throw;
