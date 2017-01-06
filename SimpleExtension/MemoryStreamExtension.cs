@@ -8,34 +8,34 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns the content of the stream as a string
         /// </summary>
-        public static string GetAsString(this MemoryStream ms, Encoding encoding)
+        public static string ToString(this MemoryStream pMemoryStream, Encoding pEncoding)
         {
-            return encoding.GetString(ms.ToArray());
+            return pEncoding.GetString(pMemoryStream.ToArray());
         }
 
         /// <summary>
         ///     Returns the content of the stream as a string
         /// </summary>
-        public static string GetAsString(this MemoryStream ms)
+        public static string ToString(this MemoryStream pMemoryStream)
         {
-            return GetAsString(ms, Encoding.Default);
+            return ToString(pMemoryStream, Encoding.Default);
         }
 
         /// <summary>
         ///     Writes the specified string into the memory stream
         /// </summary>
-        public static void WriteString(this MemoryStream ms, string inputString, Encoding encoding)
+        public static void WriteString(this MemoryStream pMemoryStream, string pInput, Encoding pEncoding)
         {
-            var buffer = encoding.GetBytes(inputString);
-            ms.Write(buffer, 0, buffer.Length);
+            var buffer = pEncoding.GetBytes(pInput);
+            pMemoryStream.Write(buffer, 0, buffer.Length);
         }
 
         /// <summary>
         ///     Writes the specified string into the memory stream
         /// </summary>
-        public static void WriteString(this MemoryStream ms, string inputString)
+        public static void WriteString(this MemoryStream pMemoryStream, string pInput)
         {
-            WriteString(ms, inputString, Encoding.Default);
+            WriteString(pMemoryStream, pInput, Encoding.Default);
         }
     }
 }

@@ -9,18 +9,18 @@ namespace SimpleExtension
     public static class EnumExtension
     {
         /// <summary>
-        ///     To the description.
+        ///    Return Attribut 'Description' of an Enumeration
         /// </summary>
-        public static string ToDescription(this Enum value)
+        public static string ToDescription(this Enum pEnumeration)
         {
             var da =
                 (DescriptionAttribute[])
-                value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return da.Length > 0 ? da[0].Description : value.ToString();
+                pEnumeration.GetType().GetField(pEnumeration.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return da.Length > 0 ? da[0].Description : pEnumeration.ToString();
         }
 
         /// <summary>
-        ///     To the list.
+        ///   Return a list of item in Enumeration
         /// </summary>
         public static List<Enum> ToList(this Enum pEnumeration)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleExtension.Properties;
+using System;
 
 namespace SimpleExtension
 {
@@ -11,14 +12,14 @@ namespace SimpleExtension
         {
             var format = "G" + significantDigits;
             return span.TotalMilliseconds < 1000
-                ? span.TotalMilliseconds.ToString(format) + " milliseconds"
+                ? span.TotalMilliseconds.ToString(format) + Resources.Miliseconds
                 : (span.TotalSeconds < 60
-                    ? span.TotalSeconds.ToString(format) + " seconds"
+                    ? span.TotalSeconds.ToString(format) + Resources.Seconds
                     : (span.TotalMinutes < 60
-                        ? span.TotalMinutes.ToString(format) + " minutes"
+                        ? span.TotalMinutes.ToString(format) + Resources.Minutes
                         : (span.TotalHours < 24
-                            ? span.TotalHours.ToString(format) + " hours"
-                            : span.TotalDays.ToString(format) + " days")));
+                            ? span.TotalHours.ToString(format) + Resources.Hours
+                            : span.TotalDays.ToString(format) + Resources.Days)));
         }
 
         /// <summary>
@@ -33,19 +34,19 @@ namespace SimpleExtension
         /// <summary>
         ///     Strings to time span.
         /// </summary>
-        public static TimeSpan StringToTimeSpan(this string time)
+        public static TimeSpan ToTimespan(this string pTime)
         {
             TimeSpan timespan;
-            var result = TimeSpan.TryParse(time, out timespan);
+            var result = TimeSpan.TryParse(pTime, out timespan);
             return result ? timespan : new TimeSpan(0, 0, 0);
         }
 
         /// <summary>
         ///     Converts the seconds to a timespan object.
         /// </summary>
-        public static TimeSpan IntegerToTimeSpan(this int totalSeconds)
+        public static TimeSpan ToTimespan(this int pSeconds)
         {
-            return new TimeSpan(0, 0, totalSeconds);
+            return new TimeSpan(0, 0, pSeconds);
         }
     }
 }

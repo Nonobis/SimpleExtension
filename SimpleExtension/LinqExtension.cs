@@ -20,10 +20,10 @@ namespace SimpleExtension
         /// <summary>
         ///     Returns a random element from a pList, or null if the pList is empty.
         /// </summary>
-        public static T Random<T>(this IEnumerable<T> pList, Random rand)
+        public static T Random<T>(this IEnumerable<T> pList, Random pRandomSeed)
         {
             if ((pList != null) && pList.Any())
-                return pList.ElementAt(rand.Next(pList.Count()));
+                return pList.ElementAt(pRandomSeed.Next(pList.Count()));
             return default(T);
         }
 
@@ -32,18 +32,18 @@ namespace SimpleExtension
         /// </summary>
         /// <typeparam name="T">The type of object being enumerated</typeparam>
         /// <returns>A shuffled shallow copy of the source items</returns>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> pList)
         {
-            return source.Shuffle(new Random());
+            return pList.Shuffle(new Random());
         }
 
         /// <summary>
         ///     Returns a shuffled IEnumerable.
         /// </summary>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rand)
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random pRandomSeed)
         {
             var pList = source.ToList();
-            pList.Shuffle(rand);
+            pList.Shuffle(pRandomSeed);
             return pList;
         }
 
@@ -58,12 +58,12 @@ namespace SimpleExtension
         /// <summary>
         ///     Shuffles an IList in place.
         /// </summary>
-        public static void Shuffle<T>(this IList<T> pList, Random rand)
+        public static void Shuffle<T>(this IList<T> pList, Random pRandomSeed)
         {
             var count = pList.Count;
             while (count > 1)
             {
-                var i = rand.Next(count--);
+                var i = pRandomSeed.Next(count--);
                 var temp = pList[count];
                 pList[count] = pList[i];
                 pList[i] = temp;
@@ -73,12 +73,12 @@ namespace SimpleExtension
         /// <summary>
         ///     Chunkses the specified chunk size.
         /// </summary>
-        public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> enumerable,
+        public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> pEnumerable,
             int chunkSize)
         {
             if (chunkSize < 1) throw new ArgumentException("chunkSize must be positive");
 
-            using (var e = enumerable.GetEnumerator())
+            using (var e = pEnumerable.GetEnumerator())
             {
                 while (e.MoveNext())
                 {

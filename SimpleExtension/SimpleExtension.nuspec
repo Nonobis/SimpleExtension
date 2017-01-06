@@ -10,7 +10,7 @@
 
   <metadata>
     <id>SimpleExtension</id>
-    <version>0.0.0.20</version>
+    <version>$version$</version>
     <title>SimpleExtension</title>
     <description>Simple collection of extensions for your project.</description>
     <authors>Arnaud Dartois</authors>
