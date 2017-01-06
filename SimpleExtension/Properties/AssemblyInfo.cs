@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SimpleExtension")]
 [assembly: AssemblyDescription("Simple collection of extensions for your project.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Arnaud Dartois ")]
+[assembly: AssemblyCompany("Arnaud Dartois")]
 [assembly: AssemblyProduct("SimpleExtension")]
-[assembly: AssemblyCopyright("Copyright © Arnaud Dartois  2016")]
+[assembly: AssemblyCopyright("Copyright © Arnaud Dartois 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
