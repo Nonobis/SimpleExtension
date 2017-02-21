@@ -71,39 +71,14 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Chunkses the specified chunk size.
+        /// Retourne des list de X elements
         /// </summary>
-        public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> pEnumerable,
-            int chunkSize)
+        public static IEnumerable<IEnumerable<TValue>> Chunks<TValue>(this IEnumerable<TValue> values, int chunkSize)
         {
-            if (chunkSize < 1) throw new ArgumentException("chunkSize must be positive");
-
-            using (var e = pEnumerable.GetEnumerator())
-            {
-                while (e.MoveNext())
-                {
-                    var remaining = chunkSize; // elements remaining in the current chunk
-                    var innerMoveNext = new Func<bool>(() => e != null && ((--remaining > 0) && e.MoveNext()));
-
-                    yield return e.GetChunk(innerMoveNext);
-                    while (innerMoveNext())
-                    {
-                        /* discard elements skipped by inner iterator */
-                    }
-                }
-            }
+            return values.Select((v, i) => new { v, groupIndex = i / chunkSize })
+                   .GroupBy(x => x.groupIndex)
+                   .Select(g => g.Select(x => x.v));
         }
-
-        /// <summary>
-        ///     Gets the chunk.
-        /// </summary>
-        private static IEnumerable<T> GetChunk<T>(this IEnumerator<T> e,
-            Func<bool> innerMoveNext)
-        {
-            do
-            {
-                yield return e.Current;
-            } while (innerMoveNext());
-        }
+        
     }
 }
