@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<package>
+  <!--
+	Any nuget reference you add will be included in the nuget package as a dependency without you
+	having to add it in here.
+	
+	For more info on how to compose a nuspec file see http://docs.nuget.org/create/nuspec-reference 
+	-->
+
+  <metadata>
+    <id>SimpleExtension.Selenium</id>
+    <version>$version$</version>
+    <title>SimpleExtension</title>
+    <description>Simple collection of Selenium extensions for your project.</description>
+    <authors>Arnaud Dartois</authors>
+    <owners>Arnaud Dartois</owners>
+    <projectUrl>http://github.com/Nonobis/SimpleExtension.Selenium</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Refactoring</releaseNotes>
+    <copyright>Copyright Arnaud Dartois 2017</copyright>
+    <tags>Extension Collection</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\net35\SimpleExtension.Selenium.dll" target="lib\net35\SimpleExtension.Selenium.dll" />
+    <file src="bin\Release\net35\SimpleExtension.Selenium.pdb" target="lib\net35\SimpleExtension.Selenium.pdb" />
+    <file src="bin\Release\net40\SimpleExtension.Selenium.dll" target="lib\net40\SimpleExtension.Selenium.dll" />
+    <file src="bin\Release\net40\SimpleExtension.Selenium.pdb" target="lib\net40\SimpleExtension.Selenium.pdb" />
+    <file src="bin\Release\net45\SimpleExtension.Selenium.dll" target="lib\net45\SimpleExtension.Selenium.dll" />
+    <file src="bin\Release\net45\SimpleExtension.Selenium.pdb" target="lib\net45\SimpleExtension.Selenium.pdb" />
+    <file src="bin\Release\net451\SimpleExtension.Selenium.dll" target="lib\net451\SimpleExtension.Selenium.dll" />
+    <file src="bin\Release\net451\SimpleExtension.Selenium.pdb" target="lib\net451\SimpleExtension.Selenium.pdb" />
+    <file src="bin\Release\net452\SimpleExtension.Selenium.dll" target="lib\net452\SimpleExtension.Selenium.dll" />
+    <file src="bin\Release\net452\SimpleExtension.Selenium.pdb" target="lib\net452\SimpleExtension.Selenium.pdb" />
+    <file src="bin\Release\net461\SimpleExtension.Selenium.dll" target="lib\net461\SimpleExtension.Selenium.dll" />
+    <file src="bin\Release\net461\SimpleExtension.Selenium.pdb" target="lib\net461\SimpleExtension.Selenium.pdb" />
+  </files>
+</package>
