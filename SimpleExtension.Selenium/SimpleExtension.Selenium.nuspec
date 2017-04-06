@@ -11,7 +11,7 @@
   <metadata>
     <id>SimpleExtension.Selenium</id>
     <version>$version$</version>
-    <title>SimpleExtension</title>
+    <title>SimpleExtension.Selenium</title>
     <description>Simple collection of Selenium extensions for your project.</description>
     <summary>Simple collection of Selenium extensions for your project.</summary>
     <authors>Arnaud Dartois</authors>

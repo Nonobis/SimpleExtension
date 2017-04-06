@@ -11,7 +11,7 @@
   <metadata>
     <id>SimpleExtension.Topshelf</id>
     <version>$version$</version>
-    <title>SimpleExtension</title>
+    <title>SimpleExtension.Topshelf</title>
     <description>Simple collection of Topshelf extensions for your project.</description>
     <summary>Simple collection of Topshelf extensions for your project.</summary>
     <authors>Arnaud Dartois</authors>
