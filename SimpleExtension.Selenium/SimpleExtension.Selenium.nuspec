@@ -13,13 +13,14 @@
     <version>$version$</version>
     <title>SimpleExtension</title>
     <description>Simple collection of Selenium extensions for your project.</description>
+    <summary>Simple collection of Selenium extensions for your project.</summary>
     <authors>Arnaud Dartois</authors>
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension.Selenium</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Refactoring</releaseNotes>
     <copyright>Copyright Arnaud Dartois 2017</copyright>
-    <tags>Extension Collection</tags>
+    <tags>Extension Selenium WebDriver</tags>
   </metadata>
   <files>
     <file src="*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
