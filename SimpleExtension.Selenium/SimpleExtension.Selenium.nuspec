@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<package>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <!--
 	Any nuget reference you add will be included in the nuget package as a dependency without you
 	having to add it in here.
@@ -18,12 +18,16 @@
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension.Selenium</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Refactoring</releaseNotes>
+    <releaseNotes>Initial Release</releaseNotes>
     <copyright>Copyright Arnaud Dartois 2017</copyright>
     <tags>Extension Selenium WebDriver</tags>
+    <dependencies>
+      <dependency id="Selenium.Support" version="3.3.0" />
+      <dependency id="Selenium.WebDriver" version="3.3.0" />
+    </dependencies>
   </metadata>
   <files>
-    <file src="*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
-    <file src="**\*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.Selenium.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.Selenium.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
   </files>
 </package>
