@@ -13,12 +13,13 @@
     <version>$version$</version>
     <title>SimpleExtension</title>
     <description>Simple collection of extensions for your project.</description>
+    <summary>Simple collection of extensions for your project.</summary>
     <authors>Arnaud Dartois</authors>
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Refactoring</releaseNotes>
-    <copyright>Copyright Arnaud Dartois 2016</copyright>
+    <copyright>Copyright Arnaud Dartois 2016-2017</copyright>
     <tags>Extension Collection</tags>
   </metadata>
   <files>
