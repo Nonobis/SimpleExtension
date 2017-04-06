@@ -25,7 +25,4 @@
     <file src="*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
     <file src="**\*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
   </files>
-  <dependencies>
-    <dependency id="Topshelf" version="4.0.3" />
-  </dependencies>
 </package>

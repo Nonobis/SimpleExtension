@@ -25,8 +25,4 @@
     <file src="*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
     <file src="**\*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
   </files>
-  <dependencies>
-    <dependency id="Selenium.Support" version="3.3.0" />
-    <dependency id="Selenium.WebDriver" version="3.3.0" />
-  </dependencies>
 </package>
