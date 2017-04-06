@@ -22,17 +22,7 @@
     <tags>Extension Collection</tags>
   </metadata>
   <files>
-    <file src="bin\Release\net35\SimpleExtension.dll" target="lib\net35\SimpleExtension.dll" />
-    <file src="bin\Release\net35\SimpleExtension.pdb" target="lib\net35\SimpleExtension.pdb" />
-    <file src="bin\Release\net40\SimpleExtension.dll" target="lib\net40\SimpleExtension.dll" />
-    <file src="bin\Release\net40\SimpleExtension.pdb" target="lib\net40\SimpleExtension.pdb" />
-    <file src="bin\Release\net45\SimpleExtension.dll" target="lib\net45\SimpleExtension.dll" />
-    <file src="bin\Release\net45\SimpleExtension.pdb" target="lib\net45\SimpleExtension.pdb" />
-    <file src="bin\Release\net451\SimpleExtension.dll" target="lib\net451\SimpleExtension.dll" />
-    <file src="bin\Release\net451\SimpleExtension.pdb" target="lib\net451\SimpleExtension.pdb" />
-    <file src="bin\Release\net452\SimpleExtension.dll" target="lib\net452\SimpleExtension.dll" />
-    <file src="bin\Release\net452\SimpleExtension.pdb" target="lib\net452\SimpleExtension.pdb" />
-    <file src="bin\Release\net461\SimpleExtension.dll" target="lib\net461\SimpleExtension.dll" />
-    <file src="bin\Release\net461\SimpleExtension.pdb" target="lib\net461\SimpleExtension.pdb" />
+    <file src="*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
   </files>
 </package>
