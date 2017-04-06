@@ -8,6 +8,19 @@ namespace SimpleExtension
     public static class LinqExtension
     {
         /// <summary>
+        /// Yields the one default.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="values">The values.</param>
+        /// <returns></returns>
+        public static IEnumerable<T> YieldOneDefault<T>(this IEnumerable<T> values)
+        {
+            yield return default(T);
+            foreach (var item in values)
+                yield return item;
+        }
+
+        /// <summary>
         ///     Randoms the element.
         /// </summary>
         public static T RandomElement<T>(this IQueryable<T> q, Expression<Func<T, bool>> e)
