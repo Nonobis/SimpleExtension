@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceProcess.Design;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceProcess;
+using System.DirectoryServices.AccountManagement;
 using Topshelf.Builders;
 using Topshelf.Configurators;
 using Topshelf.HostConfigurators;
