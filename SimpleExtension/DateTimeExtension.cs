@@ -1,5 +1,4 @@
-﻿using SimpleExtension.Properties;
-using System;
+﻿using System;
 using System.Globalization;
 
 namespace SimpleExtension
@@ -121,9 +120,9 @@ namespace SimpleExtension
 
             string formattedDate;
             if (date.Date == DateTime.Today)
-                formattedDate = Resources.Today;
+                formattedDate = " Today";
             else if (date.Date == DateTime.Today.AddDays(-1))
-                formattedDate = Resources.Yesterday;
+                formattedDate = " Yesterday";
             else if (date.Date > DateTime.Today.AddDays(-6))
                 formattedDate = date.ToString("dddd");
             else

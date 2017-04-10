@@ -1,5 +1,4 @@
-﻿using SimpleExtension.Properties;
-using System;
+﻿using System;
 
 namespace SimpleExtension
 {
@@ -12,14 +11,14 @@ namespace SimpleExtension
         {
             var format = "G" + significantDigits;
             return span.TotalMilliseconds < 1000
-                ? span.TotalMilliseconds.ToString(format) + Resources.Miliseconds
+                ? span.TotalMilliseconds.ToString(format) + " Miliseconds"
                 : (span.TotalSeconds < 60
-                    ? span.TotalSeconds.ToString(format) + Resources.Seconds
+                    ? span.TotalSeconds.ToString(format) + " Seconds"
                     : (span.TotalMinutes < 60
-                        ? span.TotalMinutes.ToString(format) + Resources.Minutes
+                        ? span.TotalMinutes.ToString(format) + " Minutes"
                         : (span.TotalHours < 24
-                            ? span.TotalHours.ToString(format) + Resources.Hours
-                            : span.TotalDays.ToString(format) + Resources.Days)));
+                            ? span.TotalHours.ToString(format) + " Hours"
+                            : span.TotalDays.ToString(format) + " Days")));
         }
 
         /// <summary>

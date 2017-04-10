@@ -1,4 +1,4 @@
-﻿namespace SimpleExtension.Enums
+﻿namespace SimpleExtension
 {
     public enum ObjectToStringTypes
     {

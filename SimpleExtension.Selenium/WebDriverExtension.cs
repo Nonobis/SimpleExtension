@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
 
-namespace CryptoBots.Tools
+namespace SimpleExtension.Selenium
 {
     public static class WebDriverExtension
     {
