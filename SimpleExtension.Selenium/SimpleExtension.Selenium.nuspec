@@ -18,7 +18,7 @@
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension.Selenium</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Add new extension methods</releaseNotes>
+    <releaseNotes>Change type of extension</releaseNotes>
     <copyright>Copyright Arnaud Dartois 2017</copyright>
     <tags>Extension Selenium WebDriver</tags>
     <dependencies>

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SimpleExtension;
 using System;
@@ -11,13 +12,13 @@ using System.Linq;
 
 namespace SimpleExtension.Selenium
 {
-    public static class WebDriverExtension
+    public static class RemoteWebDriverExtension
     {
         /// <summary>
         /// Finds the element.
         /// </summary>
         /// <returns></returns>
-        public static IWebElement FindElement(this IWebDriver pDriver, By by, int timeoutInSeconds = 30)
+        public static IWebElement FindElement(this RemoteWebDriver pDriver, By by, int timeoutInSeconds = 30)
         {
             if (timeoutInSeconds > 0)
             {
@@ -31,7 +32,7 @@ namespace SimpleExtension.Selenium
         /// Finds the elements.
         /// </summary>
         /// <returns></returns>
-        public static ReadOnlyCollection<IWebElement> FindElementsBy(this IWebDriver pDriver, By by, int timeoutInSeconds = 30)
+        public static ReadOnlyCollection<IWebElement> FindElementsBy(this RemoteWebDriver pDriver, By by, int timeoutInSeconds = 30)
         {
             if (timeoutInSeconds > 0)
             {
@@ -45,7 +46,7 @@ namespace SimpleExtension.Selenium
         /// Finds the element.
         /// </summary>
         /// <returns></returns>
-        public static IWebElement FindElement(this IWebDriver pDriver, By pQuery, bool pCheckIsVisible, int pTimeoutInSeconds = 30)
+        public static IWebElement FindElement(this RemoteWebDriver pDriver, By pQuery, bool pCheckIsVisible, int pTimeoutInSeconds = 30)
         {
             IWebElement element;
             var wait = new WebDriverWait(pDriver, TimeSpan.FromSeconds(pTimeoutInSeconds));
@@ -64,7 +65,7 @@ namespace SimpleExtension.Selenium
         /// Searches the element.
         /// </summary>
         /// <returns></returns>
-        public static IWebElement SearchElement(this IWebDriver pDriver, By pQuery, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
+        public static IWebElement SearchElement(this RemoteWebDriver pDriver, By pQuery, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
         {
             if (pDriver == null)
                 return null;
@@ -81,7 +82,7 @@ namespace SimpleExtension.Selenium
         /// Submits the form.
         /// </summary>
         /// <returns></returns>
-        public static bool SubmitForm(this IWebDriver pDriver, By pQuery, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
+        public static bool SubmitForm(this RemoteWebDriver pDriver, By pQuery, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
         {
             if (pDriver == null)
                 return false;
@@ -99,7 +100,7 @@ namespace SimpleExtension.Selenium
         /// Searches the text.
         /// </summary>
         /// <returns></returns>
-        public static void GoTo(this IWebDriver pDriver, string pUrl)
+        public static void GoTo(this RemoteWebDriver pDriver, string pUrl)
         {
             if (pDriver == null)
                 return;
@@ -111,7 +112,7 @@ namespace SimpleExtension.Selenium
         /// Searches the text.
         /// </summary>
         /// <returns></returns>
-        public static bool SearchText(this IWebDriver pDriver, string pText)
+        public static bool SearchText(this RemoteWebDriver pDriver, string pText)
         {
             if (pDriver == null)
                 return false;
@@ -128,7 +129,7 @@ namespace SimpleExtension.Selenium
         /// Gets all links.
         /// </summary>
         /// <returns></returns>
-        public static List<IWebElement> GetAllLinks(this IWebDriver pDriver, string pStartWithFilter, int pTimeoutInSeconds = 30)
+        public static List<IWebElement> GetAllLinks(this RemoteWebDriver pDriver, string pStartWithFilter, int pTimeoutInSeconds = 30)
         {
             if (pDriver == null)
                 return null;
@@ -145,7 +146,7 @@ namespace SimpleExtension.Selenium
         /// Gets the text between.
         /// </summary>
         /// <returns></returns>
-        public static string GetTextBetween(this IWebDriver pDriver, string pStartText, string pEndText)
+        public static string GetTextBetween(this RemoteWebDriver pDriver, string pStartText, string pEndText)
         {
             if (pDriver == null)
                 return string.Empty;
@@ -164,7 +165,7 @@ namespace SimpleExtension.Selenium
         /// <param name="pDriver"></param>
         /// <param name="pTagName"></param>
         /// <returns></returns>
-        public static IWebElement FindElementByTagName(this IWebDriver pDriver, string pTagName, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
+        public static IWebElement FindElementByTagName(this RemoteWebDriver pDriver, string pTagName, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
         {
             if (pDriver == null)
                 return null;
@@ -176,7 +177,7 @@ namespace SimpleExtension.Selenium
         /// Gets the type of the captcha.
         /// </summary>
         /// <returns></returns>
-        public static Image GetTagScreenshot(this IWebDriver pDriver, string pTagSearched)
+        public static Image GetTagScreenshot(this RemoteWebDriver pDriver, string pTagSearched)
         {
             Image pImage = null;
             if (pDriver == null)
@@ -203,7 +204,7 @@ namespace SimpleExtension.Selenium
         /// Closes the navigator.
         /// </summary>
         /// <returns></returns>
-        public static void CloseNavigator(this IWebDriver pDriver)
+        public static void CloseNavigator(this RemoteWebDriver pDriver)
         {
             if (pDriver != null)
                 pDriver.Quit();
