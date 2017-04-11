@@ -126,6 +126,25 @@ namespace SimpleExtension.Selenium
         }
 
         /// <summary>
+        /// Sets the element.
+        /// </summary>
+        public static bool SetElement(this RemoteWebDriver pDriver, By pQuery, string pValue)
+        {
+            if (pDriver == null)
+                return false;
+
+            var elementSearched = pDriver.FindElement(pQuery, true, 15);
+            if (elementSearched != null)
+            {
+                pDriver.ExecuteScript($"window.scrollTo(0,{elementSearched.Location.Y})");
+                elementSearched.Clear();
+                elementSearched.SendKeys(pValue);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Gets all links.
         /// </summary>
         /// <returns></returns>
