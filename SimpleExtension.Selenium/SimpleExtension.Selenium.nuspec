@@ -18,10 +18,11 @@
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension.Selenium</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Fix namespace</releaseNotes>
+    <releaseNotes>Add new extension methods</releaseNotes>
     <copyright>Copyright Arnaud Dartois 2017</copyright>
     <tags>Extension Selenium WebDriver</tags>
     <dependencies>
+      <dependency id="SimpleExtension" version="0.0.23" />
       <dependency id="Selenium.Support" version="3.3.0" />
       <dependency id="Selenium.WebDriver" version="3.3.0" />
     </dependencies>

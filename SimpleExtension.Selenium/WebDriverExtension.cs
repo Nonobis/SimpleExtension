@@ -1,7 +1,13 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SimpleExtension;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 
 namespace SimpleExtension.Selenium
 {
@@ -10,11 +16,8 @@ namespace SimpleExtension.Selenium
         /// <summary>
         /// Finds the element.
         /// </summary>
-        /// <param name="pDriver">The driver.</param>
-        /// <param name="by">The by.</param>
-        /// <param name="timeoutInSeconds">The timeout in seconds.</param>
         /// <returns></returns>
-        public static IWebElement FindElement(this IWebDriver pDriver, By by, int timeoutInSeconds)
+        public static IWebElement FindElement(this IWebDriver pDriver, By by, int timeoutInSeconds = 30)
         {
             if (timeoutInSeconds > 0)
             {
@@ -27,11 +30,8 @@ namespace SimpleExtension.Selenium
         /// <summary>
         /// Finds the elements.
         /// </summary>
-        /// <param name="pDriver">The driver.</param>
-        /// <param name="by">The by.</param>
-        /// <param name="timeoutInSeconds">The timeout in seconds.</param>
         /// <returns></returns>
-        public static ReadOnlyCollection<IWebElement> FindElements(this IWebDriver pDriver, By by, int timeoutInSeconds)
+        public static ReadOnlyCollection<IWebElement> FindElementsBy(this IWebDriver pDriver, By by, int timeoutInSeconds = 30)
         {
             if (timeoutInSeconds > 0)
             {
@@ -44,12 +44,8 @@ namespace SimpleExtension.Selenium
         /// <summary>
         /// Finds the element.
         /// </summary>
-        /// <param name="pDriver">The p driver.</param>
-        /// <param name="pQuery">The by.</param>
-        /// <param name="pTimeoutInSeconds">The p timeout in seconds.</param>
-        /// <param name="pCheckIsVisible">if set to <c>true</c> [p check is visible].</param>
         /// <returns></returns>
-        public static IWebElement FindElement(this IWebDriver pDriver, By pQuery, int pTimeoutInSeconds, bool pCheckIsVisible)
+        public static IWebElement FindElement(this IWebDriver pDriver, By pQuery, bool pCheckIsVisible, int pTimeoutInSeconds = 30)
         {
             IWebElement element;
             var wait = new WebDriverWait(pDriver, TimeSpan.FromSeconds(pTimeoutInSeconds));
@@ -62,6 +58,155 @@ namespace SimpleExtension.Selenium
                 element = wait.Until(ExpectedConditions.ElementExists(pQuery));
             }
             return element;
+        }
+
+        /// <summary>
+        /// Searches the element.
+        /// </summary>
+        /// <returns></returns>
+        public static IWebElement SearchElement(this IWebDriver pDriver, By pQuery, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
+        {
+            if (pDriver == null)
+                return null;
+
+            var elementSearched = pDriver.FindElement(pQuery, pCheckIsVisible, pTimeoutInSeconds);
+            if (elementSearched != null)
+            {
+                return elementSearched;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Submits the form.
+        /// </summary>
+        /// <returns></returns>
+        public static bool SubmitForm(this IWebDriver pDriver, By pQuery, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
+        {
+            if (pDriver == null)
+                return false;
+
+            var elementSearched = pDriver.FindElement(pQuery, pCheckIsVisible, pTimeoutInSeconds);
+            if (elementSearched != null)
+            {
+                elementSearched.Submit();
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Searches the text.
+        /// </summary>
+        /// <returns></returns>
+        public static void GoTo(this IWebDriver pDriver, string pUrl)
+        {
+            if (pDriver == null)
+                return;
+
+            pDriver.Navigate().GoToUrl(pUrl);
+        }
+
+        /// <summary>
+        /// Searches the text.
+        /// </summary>
+        /// <returns></returns>
+        public static bool SearchText(this IWebDriver pDriver, string pText)
+        {
+            if (pDriver == null)
+                return false;
+
+            var responseHtml = pDriver.PageSource;
+            if (!string.IsNullOrEmpty(responseHtml) && (responseHtml.Contains(pText)))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Gets all links.
+        /// </summary>
+        /// <returns></returns>
+        public static List<IWebElement> GetAllLinks(this IWebDriver pDriver, string pStartWithFilter, int pTimeoutInSeconds = 30)
+        {
+            if (pDriver == null)
+                return null;
+
+            var elementSearched = pDriver.FindElementsBy(By.TagName("a"), pTimeoutInSeconds);
+            if (elementSearched != null && elementSearched.Any())
+            {
+                return elementSearched.Where(p => p.GetAttribute("href").StartsWith(pStartWithFilter, StringComparison.Ordinal)).ToList();
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the text between.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetTextBetween(this IWebDriver pDriver, string pStartText, string pEndText)
+        {
+            if (pDriver == null)
+                return string.Empty;
+
+            var responseHtml = pDriver.PageSource;
+            if (!string.IsNullOrEmpty(responseHtml))
+            {
+                return responseHtml.Substring(pStartText, pEndText);
+            }
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Search element by tag name
+        /// </summary>
+        /// <param name="pDriver"></param>
+        /// <param name="pTagName"></param>
+        /// <returns></returns>
+        public static IWebElement FindElementByTagName(this IWebDriver pDriver, string pTagName, bool pCheckIsVisible = true, int pTimeoutInSeconds = 30)
+        {
+            if (pDriver == null)
+                return null;
+
+            return pDriver.FindElement(By.TagName(pTagName), pCheckIsVisible, pTimeoutInSeconds);
+        }
+
+        /// <summary>
+        /// Gets the type of the captcha.
+        /// </summary>
+        /// <returns></returns>
+        public static Image GetTagScreenshot(this IWebDriver pDriver, string pTagSearched)
+        {
+            Image pImage = null;
+            if (pDriver == null)
+                return null;
+
+            var elementCaptcha = pDriver.FindElementByTagName(pTagSearched);
+            if (elementCaptcha != null)
+            {
+                var ba = (ITakesScreenshot)pDriver;
+                using (var ss = new Bitmap(new MemoryStream(ba.GetScreenshot().AsByteArray)))
+                {
+                    var crop = new Rectangle(elementCaptcha.Location.X, elementCaptcha.Location.Y,
+                        elementCaptcha.Size.Width,
+                        elementCaptcha.Size.Height);
+                    //create a new image by cropping the original screenshot
+                    pImage = ss.Clone(crop, ss.PixelFormat);
+                }
+            }
+            return pImage;
+        }
+
+
+        /// <summary>
+        /// Closes the navigator.
+        /// </summary>
+        /// <returns></returns>
+        public static void CloseNavigator(this IWebDriver pDriver)
+        {
+            if (pDriver != null)
+                pDriver.Quit();
         }
     }
 }

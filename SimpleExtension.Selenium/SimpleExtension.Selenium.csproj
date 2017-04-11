@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SimpleExtension, Version=0.0.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleExtension.0.0.23\lib\net45\SimpleExtension.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
