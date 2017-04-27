@@ -11,12 +11,13 @@ using Topshelf.Logging;
 namespace SimpleExtension.Topshelf
 {
     #region Internal Class
+
     internal class RunAsFirstUserHostConfigurator : HostBuilderConfigurator
     {
 
         #region Logger
 
-        private static readonly LogWriter Log;
+        private static readonly LogWriter Log = HostLogger.Get(typeof(RunAsFirstUserHostConfigurator));
 
         #endregion
 
@@ -136,7 +137,7 @@ namespace SimpleExtension.Topshelf
             if (configurator == null)
                 throw new ArgumentNullException(nameof(configurator), "HostConfigurator not specified");
 
-            RunAsFirstUserHostConfigurator hostConfigurator = new RunAsFirstUserHostConfigurator();
+            var hostConfigurator = new RunAsFirstUserHostConfigurator();
             configurator.AddConfigurator(hostConfigurator);
             return configurator;
         }
