@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<package>
+  <!--
+	Any nuget reference you add will be included in the nuget package as a dependency without you
+	having to add it in here.
+	
+	For more info on how to compose a nuspec file see http://docs.nuget.org/create/nuspec-reference 
+	-->
+
+  <metadata>
+    <id>SimpleExtension.Core</id>
+    <version>$version$</version>
+    <title>SimpleExtension.Core</title>
+    <description>Simple collection of extensions for your project.</description>
+    <summary>Simple collection of extensions for your project.</summary>
+    <authors>Arnaud Dartois</authors>
+    <owners>Arnaud Dartois</owners>
+    <projectUrl>http://github.com/Nonobis/SimpleExtension</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>.Net core support</releaseNotes>
+    <copyright>Copyright Arnaud Dartois 2016-2017</copyright>
+    <tags>Extension Collection NetStandard</tags>
+  </metadata>
+  <files>
+    <file src="**\SimpleExtension.Core.*" target="lib" exclude="*.nupkg;*.vshost.*"/>
+  </files>
+</package>

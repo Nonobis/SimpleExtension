@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2409607E-D4EF-4EB5-896E-645D12864F1E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExtension", "SimpleExtension\SimpleExtension.csproj", "{503551D5-6D70-4174-9368-F30D11007392}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExtension.Topshelf", "SimpleExtension.Topshelf\SimpleExtension.Topshelf.csproj", "{DA076969-BBBB-4B20-B1B9-063C5542CEC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExtension.Selenium", "SimpleExtension.Selenium\SimpleExtension.Selenium.csproj", "{6F49F21E-1754-43C8-9CF9-9E379F4733CC}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SimpleExtension.Core", "SimpleExtension.Core\SimpleExtension.Core.xproj", "{F80C127B-7691-48E7-B2EC-3A9E8C8965C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,10 @@ Global
 		{6F49F21E-1754-43C8-9CF9-9E379F4733CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F49F21E-1754-43C8-9CF9-9E379F4733CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F49F21E-1754-43C8-9CF9-9E379F4733CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80C127B-7691-48E7-B2EC-3A9E8C8965C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80C127B-7691-48E7-B2EC-3A9E8C8965C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80C127B-7691-48E7-B2EC-3A9E8C8965C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80C127B-7691-48E7-B2EC-3A9E8C8965C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
