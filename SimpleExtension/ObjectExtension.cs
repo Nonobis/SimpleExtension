@@ -53,8 +53,8 @@ namespace SimpleExtension
                 return default(T);
 
             TextReader tr = new StringReader(pXmlData);
-            T DocItms = new T();
-            XmlSerializer xms = new XmlSerializer(DocItms.GetType());
+            var DocItms = new T();
+            var xms = new XmlSerializer(DocItms.GetType());
             DocItms = (T)xms.Deserialize(tr);
 
             return DocItms == null ? default(T) : DocItms;
@@ -71,10 +71,10 @@ namespace SimpleExtension
             if (pObject == null)
                 return string.Empty;
 
-            StringBuilder sbTR = new StringBuilder();
-            XmlSerializer xmsTR = new XmlSerializer(pObject.GetType());
-            XmlWriterSettings xwsTR = new XmlWriterSettings();
-            XmlWriter xmwTR = XmlWriter.Create(sbTR, xwsTR);
+            var sbTR = new StringBuilder();
+            var xmsTR = new XmlSerializer(pObject.GetType());
+            var xwsTR = new XmlWriterSettings();
+            var xmwTR = XmlWriter.Create(sbTR, xwsTR);
             xmsTR.Serialize(xmwTR, pObject);
             return sbTR.ToString();
         }
@@ -87,7 +87,7 @@ namespace SimpleExtension
         /// <returns></returns>
         public static T DeepClone<T>(this T pObject) where T : new()
         {
-            string GetString = SeralizeObjectToXML<T>(pObject);
+            var GetString = SeralizeObjectToXML<T>(pObject);
             return DeserializeXMLToObject<T>(GetString);
         }
 

@@ -9,6 +9,19 @@ namespace SimpleExtension
 {
     public static class StringExtension
     {
+
+        /// <summary>
+        ///     Strings to bytes.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>System.Byte[].</returns>
+        public static byte[] StringToBytes(this string str)
+        {
+            var bytes = new byte[str.Length * sizeof(char)];
+            Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
+
         /// <summary>
         ///     Gets the double.
         /// </summary>
@@ -18,7 +31,7 @@ namespace SimpleExtension
             //Try parsing in the current culture
             if (!double.TryParse(value, NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
                 //Then try in US english
-                !double.TryParse(value, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out result) &&
+                !double.TryParse(value, NumberStyles.Any, new CultureInfo("en-US"), out result) &&
                 //Then in neutral language
                 !double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
                 result = defaultValue;
@@ -29,24 +42,24 @@ namespace SimpleExtension
         /// <summary>
         ///     takes a substring between two anchor strings (or the end of the string if that anchor is null)
         /// </summary>
-        public static string Substring(this string @this, string from = null, string until = null,
+        public static string Substring(this string pSource, string from = null, string until = null,
             StringComparison comparison = StringComparison.InvariantCulture)
         {
             var fromLength = (from ?? string.Empty).Length;
             var startIndex = !string.IsNullOrEmpty(from)
-                ? @this.IndexOf(from, comparison) + fromLength
+                ? pSource.IndexOf(from, comparison) + fromLength
                 : 0;
 
             if (startIndex < fromLength)
                 throw new ArgumentException("from: Failed to find an instance of the first anchor");
 
             var endIndex = !string.IsNullOrEmpty(until)
-                ? @this.IndexOf(until, startIndex, comparison)
-                : @this.Length;
+                ? pSource.IndexOf(until, startIndex, comparison)
+                : pSource.Length;
 
             if (endIndex < 0) throw new ArgumentException("until: Failed to find an instance of the last anchor");
 
-            var subString = @this.Substring(startIndex, endIndex - startIndex);
+            var subString = pSource.Substring(startIndex, endIndex - startIndex);
             return subString;
         }
 
@@ -71,7 +84,7 @@ namespace SimpleExtension
         /// </summary>
         public static byte[] BinHexToString(this string hex)
         {
-            var offset = hex.StartsWith("0x") ? 2 : 0;
+            var offset = hex.StartsWith("0x", StringComparison.Ordinal) ? 2 : 0;
             if (hex.Length%2 != 0)
                 throw new ArgumentException($"Invalid Hex String : {hex.Length}");
 
@@ -193,7 +206,10 @@ namespace SimpleExtension
         public static decimal ParseDecimal(this string input, decimal defaultValue, IFormatProvider numberFormat)
         {
             decimal val;
-            decimal.TryParse(input, NumberStyles.Any, numberFormat, out val);
+            if (!decimal.TryParse(input, NumberStyles.Any, numberFormat, out val))
+            {
+                return defaultValue;
+            }
             return val;
         }
 
@@ -204,7 +220,10 @@ namespace SimpleExtension
         public static int ParseInt(this string input, int defaultValue, IFormatProvider numberFormat)
         {
             int val;
-            int.TryParse(input, NumberStyles.Any, numberFormat, out val);
+            if (!int.TryParse(input, NumberStyles.Any, numberFormat, out val))
+            {
+                return defaultValue;
+            }
             return val;
         }
 
@@ -222,7 +241,7 @@ namespace SimpleExtension
         /// </summary>
         public static string ProperCase(string input)
         {
-            return Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(input);
+            return Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(input.ToLower());
         }
 
         /// <summary>
@@ -336,7 +355,7 @@ namespace SimpleExtension
         /// </summary>
         public static Stream StringToStream(this string text)
         {
-            return StringToStream(text, Encoding.Default);
+            return StringToStream(text, Encoding.GetEncoding(0));
         }
 
         /// <summary>
