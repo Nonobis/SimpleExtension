@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--
+	Any nuget reference you add will be included in the nuget package as a dependency without you
+	having to add it in here.
+	
+	For more info on how to compose a nuspec file see http://docs.nuget.org/create/nuspec-reference 
+	-->
+
+  <metadata>
+    <id>SimpleExtension.Topshelf</id>
+    <version>$version$</version>
+    <title>SimpleExtension.Topshelf</title>
+    <description>Simple collection of Topshelf extensions for your project.</description>
+    <summary>Simple collection of Topshelf extensions for your project.</summary>
+    <authors>Arnaud Dartois</authors>
+    <owners>Arnaud Dartois</owners>
+    <projectUrl>http://github.com/Nonobis/SimpleExtension.Topshelf</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Initial Release</releaseNotes>
+    <copyright>Copyright Arnaud Dartois 2016-2017</copyright>
+    <tags>Topshelf Extension Collection</tags>
+    <dependencies>
+      <dependency id="Topshelf" version="4.0.3" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="SimpleExtension.Topshelf.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.Topshelf.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+  </files>
+</package>
