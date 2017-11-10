@@ -18,7 +18,7 @@
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Refactoring</releaseNotes>
+    <releaseNotes>Add new extension methods</releaseNotes>
     <copyright>Copyright Arnaud Dartois 2016-2017</copyright>
     <tags>Extension Collection</tags>
   </metadata>
