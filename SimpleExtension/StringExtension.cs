@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -20,6 +21,38 @@ namespace SimpleExtension
             var bytes = new byte[str.Length * sizeof(char)];
             Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
             return bytes;
+        }
+
+        /// <summary>
+        /// Return all possible permutation for string
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> GetPermutations(this string text)
+        {
+            return GetPermutations(string.Empty, text);
+        }
+
+        /// <summary>
+        /// Return all possible permutation for string start at specific character
+        /// </summary>
+        /// <param name="text"></param>
+        public static IEnumerable<string> GetPermutations(this string text, string start)
+        {
+            if (text.Length <= 1)
+                yield return start + text;
+            else
+            {
+                for (var i = 0; i < text.Length; i++)
+                {
+                    text = text[i] +
+                            text.Substring(0, i) +
+                            text.Substring(i + 1);
+                    foreach (var s in GetPermutations(start +
+                        text[0], text.Substring(1)))
+                        yield return s;
+                }
+            }
         }
 
         /// <summary>
@@ -391,7 +424,7 @@ namespace SimpleExtension
         /// </summary>
         public static string TerminateString(this string value, string terminator)
         {
-            if (string.IsNullOrEmpty(value) || value.EndsWith(terminator))
+            if (string.IsNullOrEmpty(value) || value.EndsWith(terminator, StringComparison.Ordinal))
                 return value;
 
             return $"{value}{terminator}";
@@ -475,7 +508,7 @@ namespace SimpleExtension
         /// <summary>
         ///     Parses the hexadecimal character.
         /// </summary>
-        private static int ParseHexChar(this char c)
+        public static int ParseHexChar(this char c)
         {
             if ((c >= '0') && (c <= '9'))
                 return c - '0';
@@ -485,6 +518,14 @@ namespace SimpleExtension
                 return c - 'a' + 10;
 
             throw new ArgumentException($"Invalid Hex String{c}");
+        }
+
+        /// <summary>
+        /// Check if a string constains string (with StringComparaison)
+        /// </summary>
+        public static bool Contains(this string pSource, string pSearchTerm, StringComparison pCompare)
+        {
+            return pSource != null && pSearchTerm != null && pSource.IndexOf(pSearchTerm, pCompare) >= 0;
         }
     }
 }
