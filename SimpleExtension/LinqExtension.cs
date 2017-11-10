@@ -84,6 +84,25 @@ namespace SimpleExtension
         }
 
         /// <summary>
+        /// Check if a list contains a string (With StringComparaison)
+        /// </summary>
+        /// <param name="pList"></param>
+        /// <param name="pValue"></param>
+        /// <param name="pOrdinal"></param>
+        /// <returns></returns>
+        public static bool Contains(this List<string> pList, string pValue, StringComparison pOrdinal)
+        {
+            foreach (var pItem in pList)
+            {
+                if (pItem != null && pItem.Contains(pValue, pOrdinal))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Retourne des list de X elements
         /// </summary>
         public static IEnumerable<IEnumerable<TValue>> Chunks<TValue>(this IEnumerable<TValue> values, int chunkSize)
