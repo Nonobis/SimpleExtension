@@ -46,18 +46,18 @@ namespace SimpleExtension.Core
         /// <summary>
         /// Deserializes the XML.
         /// </summary>
-        public static T DeserializeXMLToObject<T>(string pXmlData)
+        public static T DeserializeXmlToObject<T>(string pXmlData)
           where T : new()
         {
             if (string.IsNullOrEmpty(pXmlData))
                 return default(T);
 
             TextReader tr = new StringReader(pXmlData);
-            var DocItms = new T();
-            var xms = new XmlSerializer(DocItms.GetType());
-            DocItms = (T)xms.Deserialize(tr);
+            var docItms = new T();
+            var xms = new XmlSerializer(docItms.GetType());
+            docItms = (T)xms.Deserialize(tr);
 
-            return DocItms == null ? default(T) : DocItms;
+            return docItms == null ? default(T) : docItms;
         }
 
         /// <summary>
@@ -66,17 +66,17 @@ namespace SimpleExtension.Core
         /// <typeparam name="T"></typeparam>
         /// <param name="pObject">The XML object.</param>
         /// <returns></returns>
-        public static string SeralizeObjectToXML<T>(T pObject)
+        public static string SeralizeObjectToXml<T>(T pObject)
         {
             if (pObject == null)
                 return string.Empty;
 
-            var sbTR = new StringBuilder();
-            var xmsTR = new XmlSerializer(pObject.GetType());
-            var xwsTR = new XmlWriterSettings();
-            var xmwTR = XmlWriter.Create(sbTR, xwsTR);
-            xmsTR.Serialize(xmwTR, pObject);
-            return sbTR.ToString();
+            var sbTr = new StringBuilder();
+            var xmsTr = new XmlSerializer(pObject.GetType());
+            var xwsTr = new XmlWriterSettings();
+            var xmwTr = XmlWriter.Create(sbTr, xwsTr);
+            xmsTr.Serialize(xmwTr, pObject);
+            return sbTr.ToString();
         }
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace SimpleExtension.Core
         /// <returns></returns>
         public static T DeepClone<T>(this T pObject) where T : new()
         {
-            var GetString = SeralizeObjectToXML<T>(pObject);
-            return DeserializeXMLToObject<T>(GetString);
+            var getString = SeralizeObjectToXml<T>(pObject);
+            return DeserializeXmlToObject<T>(getString);
         }
 
         /// <summary>

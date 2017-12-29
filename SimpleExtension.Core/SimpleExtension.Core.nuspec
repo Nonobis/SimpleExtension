@@ -18,8 +18,8 @@
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>.Net core support</releaseNotes>
-    <copyright>Copyright Arnaud Dartois 2016-2017</copyright>
+    <releaseNotes>Migrate to .Net Standard 2.0</releaseNotes>
+    <copyright>Copyright Arnaud Dartois 2016-2018</copyright>
     <tags>Extension Collection NetStandard</tags>
   </metadata>
   <files>
