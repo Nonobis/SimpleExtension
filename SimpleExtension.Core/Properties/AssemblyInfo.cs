@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arnaud Dartois")]
 [assembly: AssemblyProduct("SimpleExtension.Core")]
-[assembly: AssemblyCopyright("Copyright © Arnaud Dartois 2016-2017")]
+[assembly: AssemblyCopyright("Copyright © Arnaud Dartois 2016-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,5 +34,5 @@ using System.Runtime.InteropServices;
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("0.0.1")]
-[assembly: AssemblyFileVersion("0.0.1")]
+[assembly: AssemblyVersion("0.0.2")]
+[assembly: AssemblyFileVersion("0.0.2")]
