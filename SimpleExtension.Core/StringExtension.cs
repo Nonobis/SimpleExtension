@@ -27,9 +27,8 @@ namespace SimpleExtension.Core
         /// </summary>
         public static double GetDouble(this string value, double defaultValue)
         {
-            double result;
             //Try parsing in the current culture
-            if (!double.TryParse(value, NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
+            if (!double.TryParse(value, NumberStyles.Any, CultureInfo.CurrentCulture, out var result) &&
                 //Then try in US english
                 !double.TryParse(value, NumberStyles.Any, new CultureInfo("en-US"), out result) &&
                 //Then in neutral language
@@ -69,14 +68,11 @@ namespace SimpleExtension.Core
         public static Stream ToStream(this string pValue)
         {
             // convert string to stream
-            if (pValue != null)
-            {
-                var byteArray = Encoding.UTF8.GetBytes(pValue);
+            if (pValue == null) return null;
+            var byteArray = Encoding.UTF8.GetBytes(pValue);
 
-                var stream = new MemoryStream(byteArray);
-                return stream;
-            }
-            return null;
+            var stream = new MemoryStream(byteArray);
+            return stream;
         }
 
         /// <summary>
@@ -205,8 +201,7 @@ namespace SimpleExtension.Core
         /// </summary>
         public static decimal ParseDecimal(this string input, decimal defaultValue, IFormatProvider numberFormat)
         {
-            decimal val;
-            if (!decimal.TryParse(input, NumberStyles.Any, numberFormat, out val))
+            if (!decimal.TryParse(input, NumberStyles.Any, numberFormat, out var val))
             {
                 return defaultValue;
             }
@@ -265,14 +260,14 @@ namespace SimpleExtension.Core
         {
             //This code is modified from the http://www.windowsdevcenter.com/pub/a/oreilly/windows/news/csharp_0101.html link and related posts.
 
-            string pattern = @"\w+|\W+";
-            string result = "";
-            bool capitalizeNext = true;
+            var pattern = @"\w+|\W+";
+            var result = "";
+            var capitalizeNext = true;
 
             foreach (Match m in Regex.Matches(pInput, pattern))
             {
                 // get the matched string
-                string x = m.ToString().ToLower();
+                var x = m.ToString().ToLower();
 
                 // if the first char is lower case
                 if (char.IsLower(x[0]) && capitalizeNext)
