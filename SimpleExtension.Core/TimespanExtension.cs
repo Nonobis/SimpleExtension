@@ -35,8 +35,7 @@ namespace SimpleExtension.Core
         /// </summary>
         public static TimeSpan ToTimespan(this string pTime)
         {
-            TimeSpan timespan;
-            var result = TimeSpan.TryParse(pTime, out timespan);
+            var result = TimeSpan.TryParse(pTime, out var timespan);
             return result ? timespan : new TimeSpan(0, 0, 0);
         }
 

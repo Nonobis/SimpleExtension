@@ -21,22 +21,6 @@ namespace SimpleExtension.Core
             return Convert.ToBase64String(pArray);
         }
 
-        /*
-         * // TODO : Wait for implementation of System.Drawing
-         * 
-        /// <summary>
-        ///     Bytes the array to image.
-        /// </summary>
-        /// <param name="pBytes">The p bytes.</param>
-        /// <returns>Image.</returns>
-        public static Image ByteArrayToImage(this byte[] pBytes)
-        {
-            var ms = new MemoryStream(pBytes);
-            var returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-        */
-
         /// <summary>
         ///     Byteses to string.
         /// </summary>
