@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2409607E-D4EF-4EB5-896E-645D12864F1E}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExtension.Topshelf", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExtension.Selenium", "SimpleExtension.Selenium\SimpleExtension.Selenium.csproj", "{6F49F21E-1754-43C8-9CF9-9E379F4733CC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SimpleExtension.Core", "SimpleExtension.Core\SimpleExtension.Core.xproj", "{F80C127B-7691-48E7-B2EC-3A9E8C8965C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExtension.Core", "SimpleExtension.Core\SimpleExtension.Core.csproj", "{F80C127B-7691-48E7-B2EC-3A9E8C8965C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2387971F-FB9A-474D-BEE7-4708B0AD8CC8}
 	EndGlobalSection
 EndGlobal
