@@ -7,7 +7,7 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>0.0.1-alpha</VersionPrefix>
     <Authors>Arnaud Dartois</Authors>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SimpleExtension.Core</AssemblyName>
     <OutputType>Library</OutputType>
     <PackageId>SimpleExtension.Core</PackageId>
