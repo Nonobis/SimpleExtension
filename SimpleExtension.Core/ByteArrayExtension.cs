@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SimpleExtension.Core
 {
@@ -15,7 +20,7 @@ namespace SimpleExtension.Core
         {
             return Convert.ToBase64String(pArray);
         }
-
+        
         /// <summary>
         ///     Byteses to string.
         /// </summary>
