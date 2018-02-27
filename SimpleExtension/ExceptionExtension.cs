@@ -15,8 +15,15 @@ namespace SimpleExtension
         /// <returns>System.String.</returns>
         public static string FormatForHuman(this Exception exception)
         {
+            if (exception == null)
+                return string.Empty;
+
             var properties = exception.GetType()
                 .GetProperties();
+
+            if (properties == null)
+                return string.Empty;
+
             var fields = properties
                 .Select(property => new
                 {
