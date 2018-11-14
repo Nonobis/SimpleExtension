@@ -10,7 +10,7 @@ namespace SimpleExtension.Core
     public static class ExceptionExtension
     {
         /// <summary>
-        ///     Formats for human.
+        /// Formats for human.
         /// </summary>
         /// <param name="exception">The exception.</param>
         /// <returns>System.String.</returns>

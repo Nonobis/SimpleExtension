@@ -1,19 +1,22 @@
 ﻿namespace SimpleExtension
 {
+    /// <summary>
+    /// Enum ObjectToStringTypes
+    /// </summary>
     public enum ObjectToStringTypes
     {
         /// <summary>
-        ///     The properties
+        /// The properties
         /// </summary>
         Properties,
 
         /// <summary>
-        ///     The properties and fields
+        /// The properties and fields
         /// </summary>
         PropertiesAndFields,
 
         /// <summary>
-        ///     The fields
+        /// The fields
         /// </summary>
         Fields
     }

@@ -9,20 +9,23 @@ using System.Threading.Tasks;
 
 namespace SimpleExtension.Core
 {
+    /// <summary>
+    /// Class ByteArrayExtension.
+    /// </summary>
     public static class ByteArrayExtension
     {
         /// <summary>
-        /// Convert Byte array in Base64 String
+        /// Converts to base64string.
         /// </summary>
-        /// <param name="pArray"></param>
-        /// <returns></returns>
+        /// <param name="pArray">The p array.</param>
+        /// <returns>System.String.</returns>
         public static string ToBase64String(this byte[] pArray)
         {
             return Convert.ToBase64String(pArray);
         }
-        
+
         /// <summary>
-        ///     Byteses to string.
+        /// Converts to string.
         /// </summary>
         /// <param name="pBytes">The p bytes.</param>
         /// <returns>System.String.</returns>
@@ -34,10 +37,10 @@ namespace SimpleExtension.Core
         }
 
         /// <summary>
-        ///     Gets the MD5 hash.
+        /// Gets the MD5 hash.
         /// </summary>
         /// <param name="pBytes">The p bytes.</param>
-        /// <returns></returns>
+        /// <returns>System.String.</returns>
         public static string GetMd5Hash(this byte[] pBytes)
         {
             using (var md5 = MD5.Create())
@@ -52,10 +55,10 @@ namespace SimpleExtension.Core
         }
 
         /// <summary>
-        ///     Gets the sha256 hash.
+        /// Gets the sha256 hash.
         /// </summary>
         /// <param name="pBytes">The p bytes.</param>
-        /// <returns></returns>
+        /// <returns>System.String.</returns>
         public static string GetSha256Hash(this byte[] pBytes)
         {
             using (var sha = SHA256.Create())
