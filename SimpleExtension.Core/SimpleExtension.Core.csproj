@@ -26,9 +26,7 @@
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <Version>0.0.5</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Add new Extension Method for AspNetCore
-Removed Alpha Tag
-Upgraded Version</PackageReleaseNotes>
+    <PackageReleaseNotes>Add new extension method for Enumeration</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
