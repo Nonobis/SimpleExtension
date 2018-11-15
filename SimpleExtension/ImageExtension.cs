@@ -13,7 +13,7 @@ namespace SimpleExtension
     public static class ImageExtension
     {
         /// <summary>
-        ///     Gets the image format.
+        /// Gets the image format.
         /// </summary>
         /// <param name="pImage">The p image.</param>
         /// <returns>ImageFormat.</returns>
@@ -41,7 +41,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Images to byte array.
+        /// Converts to bytearray.
         /// </summary>
         /// <param name="imageIn">The image in.</param>
         /// <returns>System.Byte[].</returns>

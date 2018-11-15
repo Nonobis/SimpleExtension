@@ -12,7 +12,7 @@ namespace SimpleExtension
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="values">The values.</param>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;T&gt;.</returns>
         public static IEnumerable<T> YieldOneDefault<T>(this IEnumerable<T> values)
         {
             yield return default(T);
@@ -21,8 +21,12 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Randoms the element.
+        /// Randoms the element.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="q">The q.</param>
+        /// <param name="e">The e.</param>
+        /// <returns>T.</returns>
         public static T RandomElement<T>(this IQueryable<T> q, Expression<Func<T, bool>> e)
         {
             var r = new Random();
@@ -31,8 +35,12 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Returns a random element from a pList, or null if the pList is empty.
+        /// Randoms the specified p random seed.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pList">The p list.</param>
+        /// <param name="pRandomSeed">The p random seed.</param>
+        /// <returns>T.</returns>
         public static T Random<T>(this IEnumerable<T> pList, Random pRandomSeed)
         {
             if ((pList != null) && pList.Any())
@@ -41,18 +49,23 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Returns a shuffled IEnumerable.
+        /// Shuffles the specified p list.
         /// </summary>
-        /// <typeparam name="T">The type of object being enumerated</typeparam>
-        /// <returns>A shuffled shallow copy of the source items</returns>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pList">The p list.</param>
+        /// <returns>IEnumerable&lt;T&gt;.</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> pList)
         {
             return pList.Shuffle(new Random());
         }
 
         /// <summary>
-        ///     Returns a shuffled IEnumerable.
+        /// Shuffles the specified p random seed.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="pRandomSeed">The p random seed.</param>
+        /// <returns>IEnumerable&lt;T&gt;.</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random pRandomSeed)
         {
             var pList = source.ToList();
@@ -61,16 +74,21 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Shuffles an IList in place.
+        /// Shuffles the specified p list.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pList">The p list.</param>
         public static void Shuffle<T>(this IList<T> pList)
         {
             pList.Shuffle(new Random());
         }
 
         /// <summary>
-        ///     Shuffles an IList in place.
+        /// Shuffles the specified p random seed.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pList">The p list.</param>
+        /// <param name="pRandomSeed">The p random seed.</param>
         public static void Shuffle<T>(this IList<T> pList, Random pRandomSeed)
         {
             var count = pList.Count;
@@ -84,12 +102,12 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Check if a list contains a string (With StringComparaison)
+        /// Determines whether this instance contains the object.
         /// </summary>
-        /// <param name="pList"></param>
-        /// <param name="pValue"></param>
-        /// <param name="pOrdinal"></param>
-        /// <returns></returns>
+        /// <param name="pList">The p list.</param>
+        /// <param name="pValue">The p value.</param>
+        /// <param name="pOrdinal">The p ordinal.</param>
+        /// <returns><c>true</c> if [contains] [the specified p value]; otherwise, <c>false</c>.</returns>
         public static bool Contains(this List<string> pList, string pValue, StringComparison pOrdinal)
         {
             foreach (var pItem in pList)
@@ -103,8 +121,12 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Retourne des list de X elements
+        /// Chunkses the specified chunk size.
         /// </summary>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
+        /// <param name="values">The values.</param>
+        /// <param name="chunkSize">Size of the chunk.</param>
+        /// <returns>IEnumerable&lt;IEnumerable&lt;TValue&gt;&gt;.</returns>
         public static IEnumerable<IEnumerable<TValue>> Chunks<TValue>(this IEnumerable<TValue> values, int chunkSize)
         {
             return values.Select((v, i) => new { v, groupIndex = i / chunkSize })

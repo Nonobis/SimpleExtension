@@ -12,8 +12,12 @@ namespace SimpleExtension
     public static class ObjectExtension
     {
         /// <summary>
-        ///     Returns a string of all the field value pairs of a given object. Works only on non-statics.
+        /// Converts to string.
         /// </summary>
+        /// <param name="pObject">The p object.</param>
+        /// <param name="pSeparator">The p separator.</param>
+        /// <param name="pType">Type of the p.</param>
+        /// <returns>System.String.</returns>
         public static string ObjectToString(this object pObject, string pSeparator, ObjectToStringTypes pType)
         {
             var fi = pObject.GetType().GetFields();
@@ -44,8 +48,11 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Deserializes the XML.
+        /// Converts to object.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pXmlData">The p XML data.</param>
+        /// <returns>T.</returns>
         public static T DeserializeXMLToObject<T>(string pXmlData)
           where T : new()
         {
@@ -61,11 +68,11 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        /// Seralizes the object to XML.
+        /// Converts to xml.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="pObject">The XML object.</param>
-        /// <returns></returns>
+        /// <param name="pObject">The p object.</param>
+        /// <returns>System.String.</returns>
         public static string SeralizeObjectToXML<T>(T pObject)
         {
             if (pObject == null)
@@ -83,8 +90,8 @@ namespace SimpleExtension
         /// Deeps the clone.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="pObject">The object clone.</param>
-        /// <returns></returns>
+        /// <param name="pObject">The p object.</param>
+        /// <returns>T.</returns>
         public static T DeepClone<T>(this T pObject) where T : new()
         {
             var GetString = SeralizeObjectToXML<T>(pObject);
@@ -92,8 +99,11 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance">The instance.</param>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public static string ToString<T>(this T instance) where T : class
         {
             if (instance == null)

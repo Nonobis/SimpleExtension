@@ -4,12 +4,12 @@ using System.Linq;
 namespace SimpleExtension
 {
     /// <summary>
-    ///     Class ExceptionExtension.
+    /// Class ExceptionExtension.
     /// </summary>
     public static class ExceptionExtension
     {
         /// <summary>
-        ///     Formats for human.
+        /// Formats for human.
         /// </summary>
         /// <param name="exception">The exception.</param>
         /// <returns>System.String.</returns>

@@ -5,10 +5,10 @@ namespace SimpleExtension
     public static class FileExtension
     {
         /// <summary>
-        ///     Files to byte array.
+        /// Converts to bytearray.
         /// </summary>
         /// <param name="pFilepath">The p filepath.</param>
-        /// <returns></returns>
+        /// <returns>System.Byte[].</returns>
         public static byte[] FileToByteArray(this string pFilepath)
         {
             if (!File.Exists(pFilepath))

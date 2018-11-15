@@ -48,6 +48,7 @@
     <Compile Include="ByteArrayExtension.cs" />
     <Compile Include="ControlExtension.cs" />
     <Compile Include="DateTimeExtension.cs" />
+    <Compile Include="EnumerableExtension.cs" />
     <Compile Include="EnumExtension.cs" />
     <Compile Include="Enums\ObjectToStringTypes.cs" />
     <Compile Include="ExceptionExtension.cs" />
@@ -66,13 +67,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="lib\net45\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

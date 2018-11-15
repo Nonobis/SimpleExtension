@@ -9,15 +9,20 @@ using System.Threading.Tasks;
 
 namespace SimpleExtension
 {
+    /// <summary>
+    /// Class BitmapExtension.
+    /// </summary>
     public static class BitmapExtension
     {
         /// <summary>
-        /// Convert Image to Greyscale
+        /// Converts to grayscale.
+        /// </summary>
+        /// <param name="image">The image.</param>
+        /// <returns>Bitmap.</returns>
         public static Bitmap ToGrayScale(this Bitmap image)
         {
             var newBitmap = new Bitmap(image.Width, image.Height);
             using (var g = Graphics.FromImage(newBitmap))
-
             {
                 //The grayscale ColorMatrix
                 var colorMatrix = new ColorMatrix(new float[][] {
@@ -40,7 +45,7 @@ namespace SimpleExtension
         }
 
         /// <summary>
-        ///     To the array.
+        /// Converts to array.
         /// </summary>
         /// <param name="image">The image.</param>
         /// <param name="format">The format.</param>
