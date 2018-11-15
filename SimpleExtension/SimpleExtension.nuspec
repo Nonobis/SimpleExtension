@@ -18,12 +18,28 @@
     <owners>Arnaud Dartois</owners>
     <projectUrl>http://github.com/Nonobis/SimpleExtension</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Fix null Reference in ExceptionExtension</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright Arnaud Dartois 2016-2018</copyright>
     <tags>Extension Collection</tags>
   </metadata>
   <files>
     <file src="SimpleExtension.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
     <file src="**\SimpleExtension.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net451\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net451\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net452\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net452\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net46\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net46\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net461\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net461\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net462\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net462\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net47\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net47\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net471\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net471\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="SimpleExtension.*" target="lib\net472\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\SimpleExtension.*" target="lib\net472\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
   </files>
 </package>
