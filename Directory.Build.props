@@ -1,0 +1,26 @@
+<Project>
+	<PropertyGroup>
+		<!-- Version de C# -->
+		<LangVersion>latest</LangVersion>
+		<!-- Auteur -->
+		<Authors>Arnaud Dartois</Authors>
+		<!-- Génération de la documentation XML -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<!-- Packages ajoutés automatiquement sur tous les projets C# situés au même niveau ou dans des niveaux inférieures à ce fichier '.props' -->
+	<ItemGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
+		<!-- Permet de définir certaines propriétés du projet pour avoir des binaires 100% identiques si le commit source est le même -->
+		<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.*" PrivateAssets="All"/>
+		<!-- Permet de proposer un certain nombre de bonnes pratiques via Roslyn (suggestions dans l'IDE) -->
+		<PackageReference Include="Roslynator.Analyzers" Version="4.*">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<!-- Permet de proposer un certain nombre de bonnes pratiques via Roslyn (suggestions dans l'IDE) correspondant aux règles Sonar -->
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.*">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+</Project>

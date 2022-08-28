@@ -19,10 +19,7 @@ namespace SimpleExtension.Core
         /// </summary>
         /// <param name="pArray">The p array.</param>
         /// <returns>System.String.</returns>
-        public static string ToBase64String(this byte[] pArray)
-        {
-            return Convert.ToBase64String(pArray);
-        }
+        public static string ToBase64String(this byte[] pArray) => Convert.ToBase64String(pArray);
 
         /// <summary>
         /// Converts to string.
@@ -31,7 +28,7 @@ namespace SimpleExtension.Core
         /// <returns>System.String.</returns>
         public static string BytesToString(this byte[] pBytes)
         {
-            var chars = new char[pBytes.Length / sizeof(char)];
+            char[] chars = new char[pBytes.Length / sizeof(char)];
             Buffer.BlockCopy(pBytes, 0, chars, 0, pBytes.Length);
             return new string(chars);
         }
@@ -43,15 +40,16 @@ namespace SimpleExtension.Core
         /// <returns>System.String.</returns>
         public static string GetMd5Hash(this byte[] pBytes)
         {
-            using (var md5 = MD5.Create())
-            {
-                var hash = md5.ComputeHash(pBytes);
+            using MD5 md5 = MD5.Create();
+            byte[] hash = md5.ComputeHash(pBytes);
 
-                var s = new StringBuilder();
-                foreach (var b in hash)
-                    s.Append(b.ToString("x2").ToLower());
-                return s.ToString();
+            StringBuilder s = new();
+            foreach (byte b in hash)
+            {
+                s.Append(b.ToString("x2").ToLower());
             }
+
+            return s.ToString();
         }
 
         /// <summary>
@@ -61,11 +59,9 @@ namespace SimpleExtension.Core
         /// <returns>System.String.</returns>
         public static string GetSha256Hash(this byte[] pBytes)
         {
-            using (var sha = SHA256.Create())
-            {
-                var checksum = sha.ComputeHash(pBytes);
-                return BitConverter.ToString(checksum).Replace("-", string.Empty);
-            }
+            using SHA256 sha = SHA256.Create();
+            byte[] checksum = sha.ComputeHash(pBytes);
+            return BitConverter.ToString(checksum).Replace("-", string.Empty);
         }
 
     }

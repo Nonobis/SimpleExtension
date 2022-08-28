@@ -14,9 +14,9 @@ namespace SimpleExtension.Core
         {
             if (File.Exists(filePath))
             {
-                var bytes = File.ReadAllBytes(filePath);
-                var ext = Path.GetExtension(filePath).Replace(".", "");
-                var base64 = Convert.ToBase64String(bytes, 0, bytes.Length);
+                byte[] bytes = File.ReadAllBytes(filePath);
+                string ext = Path.GetExtension(filePath).Replace(".", "");
+                string base64 = Convert.ToBase64String(bytes, 0, bytes.Length);
                 return $"data:image/{ext};base64,{base64}";
             }
             return string.Empty;
@@ -30,9 +30,11 @@ namespace SimpleExtension.Core
         public static byte[] FileToByteArray(this string pFilepath)
         {
             if (!File.Exists(pFilepath))
+            {
                 return null;
-            var imageData = File.ReadAllBytes(pFilepath);
-            return imageData;
+            }
+
+            return File.ReadAllBytes(pFilepath);
         }
     }
 }

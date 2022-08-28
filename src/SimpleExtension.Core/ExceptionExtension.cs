@@ -17,14 +17,18 @@ namespace SimpleExtension.Core
         public static string FormatForHuman(this Exception exception)
         {
             if (exception == null)
+            {
                 return string.Empty;
+            }
 
-            var properties = exception.GetType().GetTypeInfo().GetProperties();
+            PropertyInfo[] properties = exception.GetType().GetTypeInfo().GetProperties();
 
             if (properties == null)
+            {
                 return string.Empty;
+            }
 
-            var fields = properties
+            System.Collections.Generic.IEnumerable<string> fields = properties
                 .Select(property => new
                 {
                     property.Name,

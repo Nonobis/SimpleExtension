@@ -1,4 +1,4 @@
-﻿namespace SimpleExtension
+﻿namespace SimpleExtension.Core.Enums
 {
     /// <summary>
     /// Enum ObjectToStringTypes
