@@ -1,0 +1,4 @@
+﻿## 1.0.0
+* Dependancies Updates
+* Add a lots of new extensions methods
+* Add first units tests

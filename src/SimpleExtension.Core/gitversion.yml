@@ -1,0 +1,13 @@
+﻿mode: Mainline 
+next-version: 1.0.0
+branches:
+ feature:
+   tag: alpha
+ release:
+   tag: rc
+ hotfix:
+   tag: fix
+ master:
+   tag: ''
+ignore:
+ sha: []

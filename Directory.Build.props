@@ -4,6 +4,7 @@
 		<LangVersion>latest</LangVersion>
 		<!-- Auteur -->
 		<Authors>Arnaud Dartois</Authors>
+    <Owners>Arnaud Dartois</Owners>
 		<!-- Génération de la documentation XML -->
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>

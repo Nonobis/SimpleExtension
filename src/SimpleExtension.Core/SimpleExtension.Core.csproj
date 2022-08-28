@@ -8,24 +8,11 @@
     <Authors>Arnaud Dartois</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SimpleExtension.Core</AssemblyName>
-    <OutputType>Library</OutputType>
     <PackageId>SimpleExtension.Core</PackageId>
     <PackageTags>Extension Methods;extension;Collections;NetCore</PackageTags>
     <PackageProjectUrl>http://github.com/Nonobis/SimpleExtension.Core</PackageProjectUrl>
-    <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://raw.githubusercontent.com/SimpleExtension/SimpleExtension.Core</RepositoryUrl>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <Version>1.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>A lot of new extensions for .Net Core</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -56,10 +43,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="6.0.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Update="Roslynator.Analyzers" Version="4.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
+  <Target Name="PreparePackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec">
+    <ReadLinesFromFile File="CURRENT-RELEASE-NOTES.txt">
+      <Output TaskParameter="Lines" ItemName="ReleaseNoteLines" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNoteLines, '%0a')</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
 </Project>
